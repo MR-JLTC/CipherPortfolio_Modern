@@ -90,12 +90,12 @@ nav {
   width: auto;
   object-fit: contain;
   border-radius: 4px;
-  filter: brightness(1.05) drop-shadow(0 0 6px var(--neon-glow));
+  filter: invert(1) brightness(1.2) drop-shadow(0 0 4px var(--neon-glow));
   transition: filter 0.3s;
 }
 
 .nav-logo-img:hover {
-  filter: brightness(1.15) drop-shadow(0 0 12px var(--neon-glow));
+  filter: invert(1) brightness(1.5) drop-shadow(0 0 10px var(--neon));
 }
 
 .nav-logo-text {
