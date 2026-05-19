@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cipher | Cybersecurity Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Jhon Lloyd T. Cruz — Full Stack Developer specializing in web, mobile, and secure software development." />
+  <meta property="og:title" content="Cipher | Full Stack Developer Portfolio" />
+  <meta property="og:description"
+    content="Full Stack Developer — web, mobile, console, and cybersecurity enthusiast." />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <img src="res/logo.jpeg" alt="Mr. Cipher Logo" class="nav-logo-img" />
+      <span class="nav-logo-text"><span class="nav-logo-gt"></span>mr.cipher<span
+          class="nav-logo-cursor">_</span></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#stacks">stacks</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#certifications">certs</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span>AVAILABLE FOR WORK</div>
+        <h1 class="hero-name">
+          Hey, I'm<br>
+          <span class="glitch" data-text="Mr. Cipher">Mr. Cipher</span>
+        </h1>
+        <p class="hero-subtitle">
+          &gt; <span id="typing-text"></span><span class="cursor"></span>
+        </p>
+        <p class="hero-desc">
+          Equipped with a Computer Science foundation from Bohol Island State University – Calape Campus, with interests
+          centered on full-stack development and cybersecurity, aiming to contribute to the development of secure and
+          reliable digital systems.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary"><i class="fa fa-terminal"></i> View Projects</a>
+          <a href="#contact" class="btn btn-outline"><i class="fa fa-envelope"></i> Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-wrap">
+          <div class="avatar-ring"></div>
+          <img src="res/profile.png" alt="Mr. Cipher" class="avatar-img" />
+          <div class="avatar-status">
+            <span class="dot"></span> System Online
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-wrap">
+      <p class="section-label reveal">about_me</p>
+      <h2 class="section-title reveal">Who Am I?</h2>
+      <div class="section-divider reveal"></div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I am continuously improving my skills in both frontend and backend development, building real-world
+            projects that solve practical problems.</p>
+          <p>Passionate about developing secure and scalable applications, including mobile applications, console
+            systems, and full-stack web platforms. Committed to continuously learning new technologies and applying them
+            innovatively to create efficient and reliable software solutions.</p>
+        </div>
+        <div class="reveal">
+          <div class="terminal-box">
+            <div class="terminal-bar">
+              <span class="t-dot t-red"></span>
+              <span class="t-dot t-yellow"></span>
+              <span class="t-dot t-green"></span>
+              <span class="terminal-bar-title">cipher@kali:~</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">whoami</span></div>
+              <div class="t-out"><span class="neon">mr_cipher</span></div>
+              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">cat info.txt</span></div>
+              <div class="t-out">Name: <span class="neon">Jhon Lloyd T. Cruz</span></div>
+              <div class="t-out">Role: <span class="neon">Full Stack Developer</span></div>
+              <div class="t-out">Location: <span class="neon">Philippines</span></div>
+              <div class="t-out">Focus: <span class="neon">Full Stack Development</span></div>
+              <div class="t-out">Status: <span class="neon">Available</span></div>
+              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">cat hobbies.txt</span></div>
+              <div class="t-out">Mobile Application Development,</div>
+              <div class="t-out">Console Application Development,</div>
+              <div class="t-out">Full Stack Development</div>
+              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd cursor-blink">_</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-wrap">
+      <p class="section-label reveal">sys_capabilities</p>
+      <h2 class="section-title reveal">Skills &amp; Arsenal</h2>
+      <div class="section-divider reveal"></div>
+      <div class="skills-dual reveal">
+
+        <!-- Left: Core skill bars -->
+        <div class="skills-panel">
+          <div class="skills-panel-header">
+            <span class="panel-title">CORE_MODULES.EXE</span>
+            <span class="panel-badge">[MEMORY: OK]</span>
+          </div>
+          <div class="skills-bars">
+            <div class="skill-row">
+              <div class="skill-row-top">
+                <span class="skill-name">Web Development</span>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-pct="85"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-top">
+                <span class="skill-name">Mobile App Development</span>
+                <span class="skill-pct">78%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-pct="78"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-top">
+                <span class="skill-name">Software Development</span>
+                <span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-pct="80"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-top">
+                <span class="skill-name">Console-Based Dev</span>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-pct="88"></div>
+              </div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-top">
+                <span class="skill-name">Computer Sys Servicing</span>
+                <span class="skill-pct">75%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-pct="75"></div>
+              </div>
+              <div class="skill-note">[80-hr immersion]</div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-top">
+                <span class="skill-name">Ethical Hacking</span>
+                <span class="skill-pct">60%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-pct="60"></div>
+              </div>
+              <div class="skill-note">[Beginner-Intermediate]</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Languages & Frameworks grid -->
+        <div class="skills-panel">
+          <div class="skills-panel-header">
+            <span class="panel-title">LANGUAGES_&amp;_FRAMEWORKS.LIB</span>
+            <span class="panel-badge scanning">Scanning...</span>
+          </div>
+          <div class="lang-grid">
+            <span class="lang-tag">C</span>
+            <span class="lang-tag">Java</span>
+            <span class="lang-tag">Python</span>
+            <span class="lang-tag">JavaScript</span>
+            <span class="lang-tag">Node.js</span>
+            <span class="lang-tag">NestJS</span>
+            <span class="lang-tag">Express.js</span>
+            <span class="lang-tag">React</span>
+            <span class="lang-tag">PHP</span>
+            <span class="lang-tag">Bootstrap</span>
+            <span class="lang-tag">HTML</span>
+            <span class="lang-tag">CSS</span>
+            <span class="lang-tag">MySQL</span>
+            <span class="lang-tag">SQLite</span>
+            <span class="lang-tag">MongoDB</span>
+            <span class="lang-tag">PostgreSQL</span>
+          </div>
+          <div class="lang-warning">
+            <span class="warn-label">WARNING:</span>
+            Payloads optimized for cross-platform execution. High capability detected.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STACKS -->
+  <section id="stacks">
+    <div class="section-wrap">
+      <p class="section-label reveal">deployed_stacks</p>
+      <h2 class="section-title reveal">Tech Stacks</h2>
+      <div class="section-divider reveal"></div>
+      <div class="stacks-grid reveal">
+
+        <!-- MERN -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="stack-name">MERN_ARCH.cfg</span>
+            <span class="stack-id">#01</span>
+          </div>
+          <ul class="stack-list">
+            <li><span class="stack-letter">M</span>
+              <div>
+                <div class="stack-tech">MongoDB</div>
+                <div class="stack-role">NoSQL</div>
+              </div>
+            </li>
+            <li><span class="stack-letter">E</span>
+              <div>
+                <div class="stack-tech">Express.js</div>
+                <div class="stack-role">Backend</div>
+              </div>
+            </li>
+            <li><span class="stack-letter">R</span>
+              <div>
+                <div class="stack-tech">React</div>
+                <div class="stack-role">Frontend</div>
+              </div>
+            </li>
+            <li><span class="stack-letter">N</span>
+              <div>
+                <div class="stack-tech">Node.js</div>
+                <div class="stack-role">Runtime</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- PNRN -->
+        <div class="stack-card">
+          <div class="stack-header">
+            <span class="stack-name">PNRN_ARCH.cfg</span>
+            <span class="stack-id">#02</span>
+          </div>
+          <ul class="stack-list">
+            <li><span class="stack-letter">P</span>
+              <div>
+                <div class="stack-tech">PostgreSQL</div>
+                <div class="stack-role">Relational</div>
+              </div>
+            </li>
+            <li><span class="stack-letter">N</span>
+              <div>
+                <div class="stack-tech">NestJS</div>
+                <div class="stack-role">Backend</div>
+              </div>
+            </li>
+            <li><span class="stack-letter">R</span>
+              <div>
+                <div class="stack-tech">React</div>
+                <div class="stack-role">Frontend</div>
+              </div>
+            </li>
+            <li><span class="stack-letter">N</span>
+              <div>
+                <div class="stack-tech">Node.js</div>
+                <div class="stack-role">Runtime</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-wrap">
+      <p class="section-label reveal">portfolio</p>
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <div class="section-divider reveal"></div>
+
+      <!-- Filter Buttons -->
+      <div class="project-filters reveal">
+        <button class="filter-btn active" data-filter="all">ALL</button>
+        <button class="filter-btn" data-filter="web">WEB</button>
+        <button class="filter-btn" data-filter="mobile">MOBILE</button>
+        <button class="filter-btn" data-filter="system">SYSTEM</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <!-- Readify -->
+        <div class="project-card reveal" data-category="mobile">
+          <div class="project-meta">
+            <span class="proj-status live">LIVE</span>
+            <span class="proj-cat">MOBILE</span>
+            <span class="proj-id">TARGET_ID: 0x0A1</span>
+          </div>
+          <div class="project-title">Readify</div>
+          <div class="project-desc">Lightweight Android PDF viewer for reading and managing documents on mobile devices.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+          </div>
+          <a href="https://github.com/MR-JLTC/Readify/releases/tag/V1.0" target="_blank"
+            class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- Fintract -->
+        <div class="project-card reveal" data-category="mobile">
+          <div class="project-meta">
+            <span class="proj-status live">LIVE</span>
+            <span class="proj-cat">MOBILE</span>
+            <span class="proj-id">TARGET_ID: 0x0A2</span>
+          </div>
+          <div class="project-title">Fintract</div>
+          <div class="project-desc">Dual-platform financial tracker for personal budgeting and expense monitoring
+            (Console + Android).</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+          </div>
+          <a href="https://github.com/MR-JLTC/FINTRACT" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- ShadowCrypt -->
+        <div class="project-card reveal" data-category="system">
+          <div class="project-meta">
+            <span class="proj-status live">LIVE</span>
+            <span class="proj-cat">SYSTEM</span>
+            <span class="proj-id">TARGET_ID: 0x0A3</span>
+          </div>
+          <div class="project-title">ShadowCrypt</div>
+          <div class="project-desc">Cipher system supporting Shift, Vigenère, and Vernam encryption algorithms.</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+          </div>
+          <a href="https://github.com/MR-JLTC/ShadowCrypt" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- CyberZone -->
+        <div class="project-card reveal" data-category="system">
+          <div class="project-meta">
+            <span class="proj-status live">LIVE</span>
+            <span class="proj-cat">SYSTEM</span>
+            <span class="proj-id">TARGET_ID: 0x0A4</span>
+          </div>
+          <div class="project-title">CyberZone</div>
+          <div class="project-desc">Console-based POS system with an integrated AI chatbot for order assistance and
+            inventory management.</div>
+          <div class="project-tags">
+            <span class="tag">C</span>
+          </div>
+          <a href="https://github.com/MR-JLTC/CyberZone" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- SFSEAS -->
+        <div class="project-card reveal" data-category="system">
+          <div class="project-meta">
+            <span class="proj-status private">PRIVATE</span>
+            <span class="proj-cat">SYSTEM</span>
+            <span class="proj-id">TARGET_ID: 0x0B1</span>
+          </div>
+          <div class="project-title">SFSEAS</div>
+          <div class="project-desc">Student Faculty Schedule &amp; Attendance System built with Java Swing for
+            institutional use.</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+          </div>
+          <a href="#" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- Monkey Detection -->
+        <div class="project-card reveal" data-category="mobile">
+          <div class="project-meta">
+            <span class="proj-status private">PRIVATE</span>
+            <span class="proj-cat">MOBILE</span>
+            <span class="proj-id">TARGET_ID: 0x0B2</span>
+          </div>
+          <div class="project-title">Monkey Detection</div>
+          <div class="project-desc">TensorFlow Lite Android classifier for real-time monkey species identification using
+            on-device ML.</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+          </div>
+          <a href="#" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- SGLF Scanner -->
+        <div class="project-card reveal" data-category="mobile">
+          <div class="project-meta">
+            <span class="proj-status private">PRIVATE</span>
+            <span class="proj-cat">MOBILE</span>
+            <span class="proj-id">TARGET_ID: 0x0B3</span>
+          </div>
+          <div class="project-title">SGLF Scanner</div>
+          <div class="project-desc">Android-based student gadget detection and logging system for campus compliance
+            monitoring.</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+          </div>
+          <a href="#" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- Memory Quest -->
+        <div class="project-card reveal" data-category="mobile">
+          <div class="project-meta">
+            <span class="proj-status live">LIVE</span>
+            <span class="proj-cat">MOBILE</span>
+            <span class="proj-id">TARGET_ID: 0x0C1</span>
+          </div>
+          <div class="project-title">Memory Quest</div>
+          <div class="project-desc">A mobile-friendly memory card matching game with timed challenges and score
+            tracking.</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JS</span>
+          </div>
+          <a href="https://github.com/MR-JLTC/Memory_Card-Game" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- Queueing System -->
+        <div class="project-card reveal" data-category="web">
+          <div class="project-meta">
+            <span class="proj-status pending">PENDING</span>
+            <span class="proj-cat">WEB</span>
+            <span class="proj-id">TARGET_ID: 0x0C2</span>
+          </div>
+          <div class="project-title">Queueing System</div>
+          <div class="project-desc">Web-based queue management platform with real-time ticketing, status tracking, and
+            admin dashboard.</div>
+          <div class="project-tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">ReactJS</span>
+          </div>
+          <a href="https://github.com/MR-JLTC/Queueing-System" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- Phonebook Desktop -->
+        <div class="project-card reveal" data-category="system">
+          <div class="project-meta">
+            <span class="proj-status live">LIVE</span>
+            <span class="proj-cat">SYSTEM</span>
+            <span class="proj-id">TARGET_ID: 0x0D1</span>
+          </div>
+          <div class="project-title">Phonebook Desktop</div>
+          <div class="project-desc">A JavaFX desktop application for managing personal and professional contacts with
+            full CRUD operations, real-time search filtering, and local SQLite data persistence.</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+            <span class="tag">JavaFX</span>
+            <span class="tag">MySQL</span>
+          </div>
+          <a href="#" class="proj-link">[VIEW_PROJECT]</a>
+        </div>
+
+        <!-- TutorFriends -->
+        <div class="project-card reveal" data-category="web">
+          <div class="project-meta">
+            <span class="proj-status live">LIVE</span>
+            <span class="proj-cat">WEB</span>
+            <span class="proj-id">TARGET_ID: 0x0D2</span>
+          </div>
+          <div class="project-title">TutorFriends</div>
+          <div class="project-desc">A full-stack web platform connecting students with peer tutors for personalized
+            academic support. Features tutor discovery, session booking, and a review system.</div>
+          <div class="project-tags">
+            <span class="tag">ReactJS</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+          <a href="https://tutorfriends.online/" target="_blank" class="proj-link">[VISIT]</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE & CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-wrap">
+      <p class="section-label reveal">background</p>
+      <h2 class="section-title reveal">Experience &amp; Certifications</h2>
+      <div class="section-divider reveal"></div>
+
+      <div class="timeline-dual reveal">
+
+        <!-- Experience -->
+        <div class="timeline-column">
+          <h3 class="timeline-title">EXPERIENCE</h3>
+
+          <div class="timeline-item">
+            <div class="timeline-year"><span class="neon-arrow">▸</span> 2025</div>
+            <div class="timeline-role">On-the-Job Training (OJT) &ndash; Full Stack Development</div>
+            <div class="timeline-company">Bukolabs.io Digital Marketing Services</div>
+            <div class="timeline-location">G/F Estrella Building<br>Poblacion 3, Tagbilaran City, Bohol 6300</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year"><span class="neon-arrow">▸</span> 2022</div>
+            <div class="timeline-role">Work Immersion - Computer System Servicing</div>
+            <div class="timeline-company">Edulearn Technologies, Inc</div>
+            <div class="timeline-location">Holy Cross Academy<br>Pooc Oriental, Tubigon, Bohol 6329</div>
+          </div>
+        </div>
+
+        <div class="timeline-divider"></div>
+
+        <!-- Certifications -->
+        <div class="timeline-column">
+          <h3 class="timeline-title">CERTIFICATIONS</h3>
+
+          <div class="timeline-item">
+            <div class="timeline-year"><span class="neon-arrow">▸</span> 2025</div>
+            <ul class="timeline-list">
+              <li>AI.DEAS For Impact: AI For Developing Ethical and Applicable Solutions (Startup Challenge
+                Participation)</li>
+              <li>AI.DEAS For Impact: Beyond Algorithms, A talk on Artificial Intelligence (Startup Challenge
+                Participation &amp; Best in Logo)</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year"><span class="neon-arrow">▸</span> 2022</div>
+            <ul class="timeline-list">
+              <li>Computer System Servicing Work Immersion (Completion &amp; Excellence Award)</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Experience Gallery -->
+      <div class="gallery-section reveal">
+        <h3 class="timeline-title" style="margin-top: 3rem;">Gallery</h3>
+        <div class="gallery-container">
+          <button class="gallery-btn prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+          <div class="gallery-track">
+            <img src="res/exp/exp1.jpg" alt="Experience 1" class="gallery-img" />
+            <img src="res/exp/exp2.jpg" alt="Experience 2" class="gallery-img" />
+            <img src="res/exp/exp3.jpg" alt="Experience 3" class="gallery-img" />
+            <img src="res/exp/exp4.jpg" alt="Experience 4" class="gallery-img" />
+            <img src="res/exp/exp5.jpg" alt="Experience 5" class="gallery-img" />
+            <img src="res/exp/exp6.jpg" alt="Experience 6" class="gallery-img" />
+            <img src="res/exp/exp7.jpg" alt="Experience 7" class="gallery-img" />
+            <img src="res/exp/exp8.jpg" alt="Experience 8" class="gallery-img" />
+            <img src="res/exp/exp9.jpg" alt="Experience 9" class="gallery-img" />
+            <img src="res/exp/exp10.jpg" alt="Experience 10" class="gallery-img" />
+          </div>
+          <button class="gallery-btn next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-wrap">
+      <div class="contact-wrap">
+        <p class="section-label reveal">contact</p>
+        <h2 class="section-title reveal">Get In Touch</h2>
+        <div class="section-divider reveal" style="margin: 0 auto 1rem;"></div>
+        <p class="contact-desc reveal">Have a project, collaboration idea, or just want to connect? Drop me a
+          message — I usually respond within 24 hours.</p>
+
+        <div class="contact-grid reveal">
+          <a href="mailto:loydcipher@gmail.com" class="contact-item" id="contact-email">
+            <span class="ci-icon"><i class="fas fa-envelope"></i></span>
+            <span>loydcipher@gmail.com</span>
+            <span class="ci-label">EMAIL</span>
+          </a>
+          <a href="https://github.com/MR-JLTC" target="_blank" class="contact-item" id="contact-github">
+            <span class="ci-icon"><i class="fab fa-github"></i></span>
+            <span>github/mr-cipher</span>
+            <span class="ci-label">GITHUB</span>
+          </a>
+          <a href="https://www.linkedin.com/in/jhon-lloyd-t-cruz-523a16263?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+            target="_blank" class="contact-item" id="contact-linkedin">
+            <span class="ci-icon"><i class="fab fa-linkedin"></i></span>
+            <span>linkedin/mrcipher</span>
+            <span class="ci-label">LINKEDIN</span>
+          </a>
+          <a href="https://tryhackme.com/p/loydcipher" target="_blank" class="contact-item" id="contact-thm">
+            <span class="ci-icon">🚩</span>
+            <span>TryHackMe</span>
+            <span class="ci-label">PLATFORM</span>
+          </a>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">▸ name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">▸ email</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">▸ subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Security Consultation" required />
+          </div>
+          <div class="form-group">
+            <label for="message">▸ message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; justify-content:center;">
+            ▸ send_message.sh
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy;</span> Mr. Cipher<br>
+    <span>Stay Curious. Stay Ethical.</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
