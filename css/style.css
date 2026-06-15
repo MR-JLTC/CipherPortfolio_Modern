@@ -90,7 +90,7 @@ nav {
   width: auto;
   object-fit: contain;
   border-radius: 4px;
-  filter: invert(1) brightness(1.2) drop-shadow(0 0 4px var(--neon-glow));
+  /* filter: invert(1) brightness(1.2) drop-shadow(0 0 4px var(--neon-glow)); */
   transition: filter 0.3s;
 }
 
