@@ -1,0 +1,40 @@
+/* ==========================================================================
+   SUB-PAGE.CSS
+   ITCSS Orchestrator for service detail pages (computer, development, license).
+   ========================================================================== */
+
+/* ── 1. Settings ── */
+@import url('settings/_variables.css');
+
+/* ── 2. Generic ── */
+@import url('generic/_reset.css');
+
+/* ── 3. Base ── */
+@import url('base/_elements.css');
+
+/* ── 4. Objects ── */
+@import url('objects/_layout.css');
+
+/* ── 5. Components ── */
+/* Shared sub-page components */
+@import url('components/_sub-nav.css');
+@import url('components/_sub-hero.css');
+@import url('components/_section-card.css');
+@import url('components/_cta.css');
+@import url('components/_status-bar.css');
+@import url('components/_service-item.css');
+
+/* Page-specific components */
+@import url('components/_diag-table.css');    /* Computer page */
+@import url('components/_license-card.css');  /* License page */
+@import url('components/_process.css');       /* Development page */
+@import url('components/_note-box.css');      /* License page */
+
+/* ── 6. Animations ── */
+@import url('animations/_keyframes.css');
+
+/* ── 7. Utilities ── */
+@import url('utilities/_helpers.css');
+
+/* ── 8. Responsive ── */
+@import url('responsive/_breakpoints.css');

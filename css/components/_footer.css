@@ -1,0 +1,29 @@
+/* ==========================================================================
+   COMPONENT / FOOTER
+   Site footer for the homepage.
+   ========================================================================== */
+
+.footer {
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  position: relative;
+  z-index: var(--z-content);
+  line-height: 1.6;
+}
+
+.footer::before {
+  content: '';
+  display: block;
+  width: 150px;
+  height: 1px;
+  background: var(--color-neon-dim);
+  margin: 0 auto var(--space-lg);
+  opacity: 0.5;
+}
+
+.footer span {
+  color: var(--color-neon);
+}

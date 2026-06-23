@@ -1,0 +1,25 @@
+/* ==========================================================================
+   COMPONENT / NOTE-BOX
+   Sidebar warning or info box for sub-pages.
+   ========================================================================== */
+
+.note-box {
+  background: var(--color-bg3);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-neon);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-dim);
+  line-height: 1.7;
+}
+
+.note-box strong {
+  color: var(--color-neon);
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

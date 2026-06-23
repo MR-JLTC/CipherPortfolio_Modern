@@ -1,0 +1,41 @@
+/* ==========================================================================
+   MAIN.CSS
+   ITCSS Orchestrator for the homepage.
+   This file imports all individual layer stylesheets in the correct order.
+   ========================================================================== */
+
+/* ── 1. Settings (Variables, Design Tokens) ── */
+@import url('settings/_variables.css');
+
+/* ── 2. Generic (Reset, Normalization, Base Fonts) ── */
+@import url('generic/_reset.css');
+
+/* ── 3. Base (Default styles for HTML elements) ── */
+@import url('base/_elements.css');
+
+/* ── 4. Objects (Class-based layouts, wrappers, structures) ── */
+@import url('objects/_layout.css');
+
+/* ── 5. Components (Self-contained UI blocks) ── */
+@import url('components/_btn.css');
+@import url('components/_nav.css');
+@import url('components/_hero.css');
+@import url('components/_avatar.css');
+@import url('components/_terminal.css');
+@import url('components/_skills.css');
+@import url('components/_stacks.css');
+@import url('components/_services.css');
+@import url('components/_projects.css');
+@import url('components/_timeline.css');
+@import url('components/_gallery.css');
+@import url('components/_contact.css');
+@import url('components/_footer.css');
+
+/* ── 6. Animations (Consolidated Keyframes) ── */
+@import url('animations/_keyframes.css');
+
+/* ── 7. Utilities (Single-purpose helper classes) ── */
+@import url('utilities/_helpers.css');
+
+/* ── 8. Responsive (Media queries) ── */
+@import url('responsive/_breakpoints.css');

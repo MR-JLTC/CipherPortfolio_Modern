@@ -1,0 +1,102 @@
+/* ==========================================================================
+   COMPONENT / CONTACT
+   Contact section with grid and form.
+   ========================================================================== */
+
+.contact-wrap {
+  max-width: var(--max-width-xs);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-desc {
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-2xl);
+}
+
+/* ── Contact Grid ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+.contact-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  text-decoration: none;
+  color: var(--color-text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.contact-item:hover {
+  color: var(--color-neon);
+  border-color: var(--color-border-hover);
+  background: var(--color-surface-hover);
+}
+
+.contact-item .ci-icon {
+  font-size: 1.5rem;
+}
+
+.contact-item .ci-label {
+  color: var(--color-text-dim);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+/* ── Form ── */
+.contact-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-neon);
+  letter-spacing: 0.08em;
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.8rem var(--space-md);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-neon-sm);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}

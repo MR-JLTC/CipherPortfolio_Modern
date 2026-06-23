@@ -1,0 +1,80 @@
+/* ==========================================================================
+   COMPONENT / LICENSE-CARD
+   Cards showing license details on license manager page.
+   ========================================================================== */
+
+.license-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.license-card {
+  background: var(--color-bg3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.license-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md), var(--shadow-neon-sm);
+}
+
+.license-card-top {
+  padding: 1rem 1.2rem 0.8rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.license-icon {
+  font-size: 1.5rem;
+  color: var(--color-neon);
+  text-shadow: 0 0 10px var(--color-neon-glow);
+  flex-shrink: 0;
+}
+
+.license-name {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.license-type {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-dim);
+  margin-top: 0.15rem;
+}
+
+.license-card-body {
+  padding: 0.8rem 1.2rem;
+}
+
+.license-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.license-features li {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--color-text-dim);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.license-features li::before {
+  content: '\25b8';
+  color: var(--color-neon);
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  margin-top: 1px;
+}

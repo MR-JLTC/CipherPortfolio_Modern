@@ -1,0 +1,47 @@
+/* ==========================================================================
+   COMPONENT / SERVICE-ITEM
+   Grid cards used inside the sub-page content sections to show individual service details.
+   Used in computer and development sub-pages.
+   ========================================================================== */
+
+.services-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.service-item {
+  background: var(--color-bg3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-item:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md), var(--shadow-neon-sm);
+}
+
+.service-item-icon {
+  font-size: 1.4rem;
+  color: var(--color-neon);
+  margin-bottom: 0.6rem;
+  display: block;
+  text-shadow: 0 0 10px var(--color-neon-glow);
+}
+
+.service-item h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 0.4rem;
+}
+
+.service-item p {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}

@@ -1,0 +1,146 @@
+/* ==========================================================================
+   COMPONENT / SKILLS
+   Skills section with progress bars and language grid.
+   ========================================================================== */
+
+#skills {
+  background: var(--color-bg2);
+}
+
+.skills-dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+/* ── Panel ── */
+.skills-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.skills-panel__header {
+  background: var(--color-bg3);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.6rem var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.skills-panel__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-neon);
+  letter-spacing: 0.05em;
+}
+
+.skills-panel__badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-dim);
+  border: 1px solid var(--color-border);
+  padding: 0.1rem var(--space-sm);
+  border-radius: var(--radius-sm);
+}
+
+.skills-panel__badge--scanning {
+  color: var(--color-neon-dim);
+  border-color: rgba(0, 255, 65, 0.3);
+  animation: blink 2s infinite;
+}
+
+/* ── Skill Bars ── */
+.skills-bars {
+  padding: 1.2rem var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.skill-row-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.skill-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text);
+}
+
+.skill-pct {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-neon);
+}
+
+.skill-note {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-dim);
+  margin-top: var(--space-xs);
+}
+
+.skill-bar-track {
+  height: 4px;
+  background: var(--color-bg3);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-neon-dim), var(--color-neon));
+  border-radius: var(--radius-sm);
+  width: 0;
+  transition: width var(--transition-smooth);
+  box-shadow: 0 0 8px var(--color-neon-glow);
+}
+
+/* ── Language Grid ── */
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  padding: 1.2rem var(--space-md);
+}
+
+.lang-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text);
+  text-align: center;
+  padding: 0.45rem 0.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg3);
+  transition: all var(--transition-fast);
+}
+
+.lang-tag:hover {
+  border-color: var(--color-neon-dim);
+  color: var(--color-neon);
+  background: var(--color-surface-hover);
+}
+
+/* ── Warning ── */
+.lang-warning {
+  border-top: 1px solid var(--color-border);
+  padding: 0.7rem var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text-dim);
+  line-height: 1.5;
+}
+
+.lang-warning__label {
+  color: var(--color-danger);
+  display: block;
+  margin-bottom: var(--space-xs);
+}

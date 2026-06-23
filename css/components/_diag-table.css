@@ -1,0 +1,50 @@
+/* ==========================================================================
+   COMPONENT / DIAG-TABLE
+   Diagnostic table used in computer services page.
+   ========================================================================== */
+
+.diag-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.diag-table th {
+  text-align: left;
+  padding: 0.5rem 0.8rem;
+  color: var(--color-neon);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.diag-table td {
+  padding: 0.6rem 0.8rem;
+  color: var(--color-text-dim);
+  border-bottom: 1px solid rgba(0, 255, 65, 0.06);
+  vertical-align: top;
+}
+
+.diag-table tr:last-child td {
+  border-bottom: none;
+}
+
+.diag-table td:first-child {
+  color: var(--color-text);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ── Status Badge ── */
+.badge-ok {
+  display: inline-block;
+  background: rgba(0, 255, 65, 0.12);
+  color: var(--color-neon);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.62rem;
+  padding: 0.1rem 0.4rem;
+  letter-spacing: 0.04em;
+}

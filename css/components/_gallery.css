@@ -1,0 +1,79 @@
+/* ==========================================================================
+   COMPONENT / GALLERY
+   Horizontal scrolling image gallery with nav buttons.
+   ========================================================================== */
+
+.gallery-section {
+  margin-top: var(--space-2xl);
+}
+
+.gallery-container {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) 0;
+  display: flex;
+  align-items: center;
+}
+
+.gallery-track {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0 var(--space-md);
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-img {
+  height: 240px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  scroll-snap-align: center;
+  border: 1px solid var(--color-border);
+}
+
+/* ── Nav Buttons ── */
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(12, 16, 12, 0.85);
+  color: var(--color-text-dim);
+  border: 1px solid var(--color-border);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: var(--z-gallery);
+  transition: all var(--transition-fast);
+}
+
+.gallery-btn:hover {
+  background: var(--color-neon);
+  color: var(--color-bg);
+  border-color: var(--color-neon);
+}
+
+.gallery-btn.prev {
+  left: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-left: none;
+}
+
+.gallery-btn.next {
+  right: 0;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  border-right: none;
+}

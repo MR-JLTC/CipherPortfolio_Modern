@@ -1,0 +1,62 @@
+/* ==========================================================================
+   COMPONENT / CTA
+   Call-to-action card used on sub-pages.
+   Replaces duplicated .cta-card styles across 3 sub-page files.
+   ========================================================================== */
+
+.cta-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-neon), transparent);
+}
+
+.cta-card__title {
+  font-family: var(--font-sans);
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  color: var(--color-white);
+  margin-bottom: 0.6rem;
+}
+
+.cta-card__desc {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-lg);
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-neon);
+  color: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow var(--transition-fast), opacity var(--transition-fast);
+}
+
+.cta-btn:hover {
+  box-shadow: var(--shadow-neon-md);
+  opacity: 0.9;
+}

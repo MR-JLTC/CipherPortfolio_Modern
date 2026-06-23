@@ -1,0 +1,70 @@
+/* ==========================================================================
+   COMPONENT / SUB-HERO
+   Shared hero section for sub-pages (services detail pages).
+   Replaces duplicated .hero styles in computer_style, development_style, license_style.
+   ========================================================================== */
+
+.sub-hero {
+  padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
+  max-width: var(--max-width-sm);
+  margin: 0 auto;
+  position: relative;
+}
+
+.sub-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-neon), transparent);
+}
+
+.sub-hero__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-neon);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sub-hero__label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-neon);
+  border-radius: var(--radius-round);
+  box-shadow: var(--shadow-neon-dot);
+  animation: pulse-dot 1.5s infinite;
+}
+
+.sub-hero__icon {
+  font-size: 3rem;
+  color: var(--color-neon);
+  text-shadow: 0 0 20px var(--color-neon-glow);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.sub-hero__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--color-white);
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+}
+
+.sub-hero__desc {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  color: var(--color-text-dim);
+  line-height: 1.8;
+  max-width: 580px;
+}

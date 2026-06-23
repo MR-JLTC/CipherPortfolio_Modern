@@ -1,0 +1,49 @@
+/* ==========================================================================
+   COMPONENT / SUB-NAV
+   Shared navigation bar for sub-pages (services detail pages).
+   Replaces duplicated nav styles in computer_style, development_style, license_style.
+   ========================================================================== */
+
+.sub-nav {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg3);
+  padding: 0.9rem var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+}
+
+.sub-nav__back {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-neon);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  letter-spacing: 0.05em;
+  transition: opacity var(--transition-fast);
+}
+
+.sub-nav__back:hover {
+  opacity: 0.7;
+}
+
+.sub-nav__sep {
+  color: var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.sub-nav__path {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+.sub-nav__path span {
+  color: var(--color-neon);
+}

@@ -1,0 +1,35 @@
+/* ==========================================================================
+   COMPONENT / SECTION CARD
+   Shared content card for sub-pages.
+   Replaces duplicated .section-card styles across 3 sub-page files.
+   ========================================================================== */
+
+.sub-content {
+  max-width: var(--max-width-sm);
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-3xl);
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.section-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.section-card__header {
+  background: var(--color-bg3);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.6rem var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-neon);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.section-card__body {
+  padding: var(--space-lg);
+}

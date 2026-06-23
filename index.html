@@ -13,7 +13,7 @@
   <meta property="og:title" content="Cipher | Full Stack Developer Portfolio" />
   <meta property="og:description"
     content="Full Stack Developer — web, mobile, console, and cybersecurity enthusiast." />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/main.css" />
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
@@ -23,16 +23,17 @@
   <canvas id="matrix-canvas"></canvas>
 
   <!-- NAV -->
-  <nav id="navbar">
+  <nav id="navbar" class="nav">
     <a href="#hero" class="nav-logo">
-      <img src="res/logo_favicon.png" alt="Mr. Cipher Logo" class="nav-logo-img" />
-      <span class="nav-logo-text"><span class="nav-logo-gt"></span>mr.cipher<span
-          class="nav-logo-cursor">_</span></span>
+      <img src="res/logo_favicon.png" alt="Mr. Cipher Logo" class="nav-logo__img" />
+      <span class="nav-logo__text"><span class="nav-logo__gt"></span>mr.cipher<span
+          class="nav-logo__cursor">_</span></span>
     </a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">about</a></li>
       <li><a href="#skills">skills</a></li>
       <li><a href="#stacks">stacks</a></li>
+      <li><a href="#services">services</a></li>
       <li><a href="#projects">projects</a></li>
       <li><a href="#certifications">certs</a></li>
       <li><a href="#contact">contact</a></li>
@@ -60,8 +61,8 @@
           reliable digital systems.
         </p>
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary"><i class="fa fa-terminal"></i> View Projects</a>
-          <a href="#contact" class="btn btn-outline"><i class="fa fa-envelope"></i> Get In Touch</a>
+          <a href="#projects" class="btn btn--primary"><i class="fa fa-terminal"></i> View Projects</a>
+          <a href="#contact" class="btn btn--outline"><i class="fa fa-envelope"></i> Get In Touch</a>
         </div>
       </div>
       <div class="hero-avatar">
@@ -69,7 +70,7 @@
           <div class="avatar-ring"></div>
           <img src="res/profile.jpg" alt="Mr. Cipher" class="avatar-img" />
           <div class="avatar-status">
-            <span class="dot"></span> System Online
+            <span class="avatar-status__dot"></span> System Online
           </div>
         </div>
       </div>
@@ -93,25 +94,25 @@
         <div class="reveal">
           <div class="terminal-box">
             <div class="terminal-bar">
-              <span class="t-dot t-red"></span>
-              <span class="t-dot t-yellow"></span>
-              <span class="t-dot t-green"></span>
-              <span class="terminal-bar-title">cipher@kali:~</span>
+              <span class="terminal-bar__dot terminal-bar__dot--red"></span>
+              <span class="terminal-bar__dot terminal-bar__dot--yellow"></span>
+              <span class="terminal-bar__dot terminal-bar__dot--green"></span>
+              <span class="terminal-bar__title">cipher@kali:~</span>
             </div>
             <div class="terminal-body">
-              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">whoami</span></div>
-              <div class="t-out"><span class="neon">mr_cipher</span></div>
-              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">cat info.txt</span></div>
-              <div class="t-out">Name: <span class="neon">Jhon Lloyd T. Cruz</span></div>
-              <div class="t-out">Role: <span class="neon">Full Stack Developer</span></div>
-              <div class="t-out">Location: <span class="neon">Philippines</span></div>
-              <div class="t-out">Focus: <span class="neon">Full Stack Development</span></div>
-              <div class="t-out">Status: <span class="neon">Available</span></div>
-              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">cat hobbies.txt</span></div>
-              <div class="t-out">Mobile Application Development,</div>
-              <div class="t-out">Console Application Development,</div>
-              <div class="t-out">Full Stack Development</div>
-              <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd cursor-blink">_</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">whoami</span></div>
+              <div class="terminal-out"><span class="neon">mr_cipher</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">cat info.txt</span></div>
+              <div class="terminal-out">Name: <span class="neon">Jhon Lloyd T. Cruz</span></div>
+              <div class="terminal-out">Role: <span class="neon">Full Stack Developer</span></div>
+              <div class="terminal-out">Location: <span class="neon">Philippines</span></div>
+              <div class="terminal-out">Focus: <span class="neon">Full Stack Development</span></div>
+              <div class="terminal-out">Status: <span class="neon">Available</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">cat hobbies.txt</span></div>
+              <div class="terminal-out">Mobile Application Development,</div>
+              <div class="terminal-out">Console Application Development,</div>
+              <div class="terminal-out">Full Stack Development</div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd cursor-blink">_</span></div>
             </div>
           </div>
         </div>
@@ -129,9 +130,9 @@
 
         <!-- Left: Core skill bars -->
         <div class="skills-panel">
-          <div class="skills-panel-header">
-            <span class="panel-title">CORE_MODULES.EXE</span>
-            <span class="panel-badge">[MEMORY: OK]</span>
+          <div class="skills-panel__header">
+            <span class="skills-panel__title">CORE_MODULES.EXE</span>
+            <span class="skills-panel__badge">[MEMORY: OK]</span>
           </div>
           <div class="skills-bars">
             <div class="skill-row">
@@ -195,9 +196,9 @@
 
         <!-- Right: Languages & Frameworks grid -->
         <div class="skills-panel">
-          <div class="skills-panel-header">
-            <span class="panel-title">LANGUAGES_&amp;_FRAMEWORKS.LIB</span>
-            <span class="panel-badge scanning">Scanning...</span>
+          <div class="skills-panel__header">
+            <span class="skills-panel__title">LANGUAGES_&amp;_FRAMEWORKS.LIB</span>
+            <span class="skills-panel__badge skills-panel__badge--scanning">Scanning...</span>
           </div>
           <div class="lang-grid">
             <span class="lang-tag">C</span>
@@ -218,7 +219,7 @@
             <span class="lang-tag">PostgreSQL</span>
           </div>
           <div class="lang-warning">
-            <span class="warn-label">WARNING:</span>
+            <span class="lang-warning__label">WARNING:</span>
             Payloads optimized for cross-platform execution. High capability detected.
           </div>
         </div>
@@ -237,9 +238,9 @@
 
         <!-- MERN -->
         <div class="stack-card">
-          <div class="stack-header">
-            <span class="stack-name">MERN_ARCH.cfg</span>
-            <span class="stack-id">#01</span>
+          <div class="stack-card__header">
+            <span class="stack-card__name">MERN_ARCH.cfg</span>
+            <span class="stack-card__id">#01</span>
           </div>
           <ul class="stack-list">
             <li><span class="stack-letter">M</span>
@@ -271,9 +272,9 @@
 
         <!-- PNRN -->
         <div class="stack-card">
-          <div class="stack-header">
-            <span class="stack-name">PNRN_ARCH.cfg</span>
-            <span class="stack-id">#02</span>
+          <div class="stack-card__header">
+            <span class="stack-card__name">PNRN_ARCH.cfg</span>
+            <span class="stack-card__id">#02</span>
           </div>
           <ul class="stack-list">
             <li><span class="stack-letter">P</span>
@@ -307,6 +308,83 @@
     </div>
   </section>
 
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-wrap">
+      <p class="section-label reveal">services</p>
+      <h2 class="section-title reveal">What I Offer</h2>
+      <div class="section-divider reveal"></div>
+      <div class="services-grid reveal">
+        <!-- Service 1: Development -->
+        <div class="service-card" data-page="services/development.html">
+          <div class="service-card__header">
+            <span class="service-card__module">DEV_SYSTEMS.EXE</span>
+            <span class="service-card__badge service-card__badge--active">ACTIVE</span>
+          </div>
+          <div class="service-card__icon-wrap">
+            <i class="fas fa-code service-card__icon"></i>
+          </div>
+          <h3 class="service-card__title">Custom System Development</h3>
+          <ul class="service-card__list">
+            <li><span class="service-card__prompt">▸</span> Web applications</li>
+            <li><span class="service-card__prompt">▸</span> Desktop software</li>
+            <li><span class="service-card__prompt">▸</span> Database systems</li>
+            <li><span class="service-card__prompt">▸</span> Mobile applications</li>
+            <li><span class="service-card__prompt">▸</span> Thesis/Capstone Projects</li>
+          </ul>
+          <div class="service-card__footer">
+            <span class="service-card__status"><span class="service-card__status-dot"></span> Available</span>
+          </div>
+        </div>
+
+        <!-- Service 2: Computer Services -->
+        <div class="service-card" data-page="services/computer.html">
+          <div class="service-card__header">
+            <span class="service-card__module">HARDWARE_OPS.cfg</span>
+            <span class="service-card__badge service-card__badge--active">ACTIVE</span>
+          </div>
+          <div class="service-card__icon-wrap">
+            <i class="fas fa-shield-alt service-card__icon"></i>
+          </div>
+          <h3 class="service-card__title">Computer Services</h3>
+          <ul class="service-card__list">
+            <li><span class="service-card__prompt">▸</span> Laptop/PC Reformat</li>
+            <li><span class="service-card__prompt">▸</span> Laptop/PC Ram Upgrade</li>
+            <li><span class="service-card__prompt">▸</span> Laptop/PC Storage Upgrade</li>
+            <li><span class="service-card__prompt">▸</span> Computer setup and troubleshooting</li>
+            <li><span class="service-card__prompt">▸</span> Software installation and updates</li>
+            <li><span class="service-card__prompt">▸</span> Hardware diagnostics and repair</li>
+          </ul>
+          <div class="service-card__footer">
+            <span class="service-card__status"><span class="service-card__status-dot"></span> Available</span>
+          </div>
+        </div>
+
+        <!-- Service 3: Software Licenses -->
+        <div class="service-card"  data-page="services/license_manager.html">
+          <div class="service-card__header">
+            <span class="service-card__module">LICENSE_MANAGER.app</span>
+            <span class="service-card__badge service-card__badge--active">ACTIVE</span>
+          </div>
+          <div class="service-card__icon-wrap">
+            <i class="fas fa-cogs service-card__icon"></i>
+          </div>
+          <h3 class="service-card__title">Software Installation & Licenses</h3>
+          <ul class="service-card__list">
+            <li><span class="service-card__prompt">▸</span> Operating Systems (Windows, Linux)</li>
+            <li><span class="service-card__prompt">▸</span> Productivity Software (Microsoft Office, Adobe Suite)</li>
+            <li><span class="service-card__prompt">▸</span> MS Office Lifetime Licenses</li>
+            <li><span class="service-card__prompt">▸</span> Adobe Creative Suite Licenses</li>
+            <li><span class="service-card__prompt">▸</span> Games</li>
+          </ul>
+          <div class="service-card__footer">
+            <span class="service-card__status"><span class="service-card__status-dot"></span> Available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-wrap">
@@ -327,7 +405,7 @@
         <!-- Readify -->
         <div class="project-card reveal" data-category="mobile">
           <div class="project-meta">
-            <span class="proj-status live">LIVE</span>
+            <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">MOBILE</span>
             <span class="proj-id">TARGET_ID: 0x0A1</span>
           </div>
@@ -344,7 +422,7 @@
         <!-- Fintract -->
         <div class="project-card reveal" data-category="mobile">
           <div class="project-meta">
-            <span class="proj-status live">LIVE</span>
+            <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">MOBILE</span>
             <span class="proj-id">TARGET_ID: 0x0A2</span>
           </div>
@@ -360,7 +438,7 @@
         <!-- ShadowCrypt -->
         <div class="project-card reveal" data-category="system">
           <div class="project-meta">
-            <span class="proj-status live">LIVE</span>
+            <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">SYSTEM</span>
             <span class="proj-id">TARGET_ID: 0x0A3</span>
           </div>
@@ -375,7 +453,7 @@
         <!-- CyberZone -->
         <div class="project-card reveal" data-category="system">
           <div class="project-meta">
-            <span class="proj-status live">LIVE</span>
+            <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">SYSTEM</span>
             <span class="proj-id">TARGET_ID: 0x0A4</span>
           </div>
@@ -391,7 +469,7 @@
         <!-- SFSEAS -->
         <div class="project-card reveal" data-category="system">
           <div class="project-meta">
-            <span class="proj-status private">PRIVATE</span>
+            <span class="proj-status proj-status--private">PRIVATE</span>
             <span class="proj-cat">SYSTEM</span>
             <span class="proj-id">TARGET_ID: 0x0B1</span>
           </div>
@@ -407,7 +485,7 @@
         <!-- Monkey Detection -->
         <div class="project-card reveal" data-category="mobile">
           <div class="project-meta">
-            <span class="proj-status private">PRIVATE</span>
+            <span class="proj-status proj-status--private">PRIVATE</span>
             <span class="proj-cat">MOBILE</span>
             <span class="proj-id">TARGET_ID: 0x0B2</span>
           </div>
@@ -424,7 +502,7 @@
         <!-- SGLF Scanner -->
         <div class="project-card reveal" data-category="mobile">
           <div class="project-meta">
-            <span class="proj-status private">PRIVATE</span>
+            <span class="proj-status proj-status--private">PRIVATE</span>
             <span class="proj-cat">MOBILE</span>
             <span class="proj-id">TARGET_ID: 0x0B3</span>
           </div>
@@ -441,7 +519,7 @@
         <!-- Memory Quest -->
         <div class="project-card reveal" data-category="mobile">
           <div class="project-meta">
-            <span class="proj-status live">LIVE</span>
+            <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">MOBILE</span>
             <span class="proj-id">TARGET_ID: 0x0C1</span>
           </div>
@@ -460,7 +538,7 @@
         <!-- Queueing System -->
         <div class="project-card reveal" data-category="web">
           <div class="project-meta">
-            <span class="proj-status pending">PENDING</span>
+            <span class="proj-status proj-status--pending">PENDING</span>
             <span class="proj-cat">WEB</span>
             <span class="proj-id">TARGET_ID: 0x0C2</span>
           </div>
@@ -478,7 +556,7 @@
         <!-- Phonebook Desktop -->
         <!-- <div class="project-card reveal" data-category="system">
           <div class="project-meta">
-            <span class="proj-status live">LIVE</span>
+            <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">SYSTEM</span>
             <span class="proj-id">TARGET_ID: 0x0D1</span>
           </div>
@@ -496,7 +574,7 @@
         <!-- TutorFriends -->
         <div class="project-card reveal" data-category="web">
           <div class="project-meta">
-            <span class="proj-status live">LIVE</span>
+            <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">WEB</span>
             <span class="proj-id">TARGET_ID: 0x0D2</span>
           </div>
@@ -646,7 +724,7 @@
             <label for="message">▸ message</label>
             <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; justify-content:center;">
+          <button type="submit" class="btn btn--primary" id="submit-btn" style="width:100%; justify-content:center;">
             ▸ send_message.sh
           </button>
         </form>
@@ -655,7 +733,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer class="footer">
     <span>&copy;</span> Mr. Cipher<br>
     <span>Stay Curious. Stay Ethical.</span>
   </footer>

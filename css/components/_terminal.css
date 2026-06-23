@@ -1,0 +1,90 @@
+/* ==========================================================================
+   COMPONENT / TERMINAL
+   Terminal/console UI box used in the About section.
+   ========================================================================== */
+
+/* ── About Grid ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-md);
+}
+
+/* ── Terminal Box ── */
+.terminal-box {
+  background: var(--color-bg2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.terminal-bar {
+  background: var(--color-bg3);
+  padding: 0.7rem var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.terminal-bar__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-round);
+}
+
+.terminal-bar__dot--red {
+  background: var(--color-danger);
+}
+
+.terminal-bar__dot--yellow {
+  background: var(--color-warning);
+}
+
+.terminal-bar__dot--green {
+  background: var(--color-success);
+}
+
+.terminal-bar__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-dim);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terminal-body {
+  padding: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: 2;
+}
+
+/* ── Terminal Lines ── */
+.terminal-line {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.terminal-prompt {
+  color: var(--color-neon);
+}
+
+.terminal-cmd {
+  color: var(--color-text);
+}
+
+.terminal-out {
+  color: var(--color-text-dim);
+  padding-left: 1.1rem;
+}
+
+.terminal-out .neon {
+  color: var(--color-neon);
+}

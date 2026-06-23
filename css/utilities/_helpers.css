@@ -1,0 +1,64 @@
+/* ==========================================================================
+   UTILITIES / HELPERS
+   Single-purpose layout or styling overrides.
+   No component-specific declarations belong here.
+   ========================================================================== */
+
+/* ── Scroll Reveal Helpers (utilized by IntersectionObserver in JS) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Display ── */
+.hidden {
+  display: none !important;
+}
+
+.u-display-none {
+  display: none !important;
+}
+
+.u-display-block {
+  display: block !important;
+}
+
+.u-display-flex {
+  display: flex !important;
+}
+
+/* ── Typography & Alignment ── */
+.u-text-center {
+  text-align: center !important;
+}
+
+.u-text-left {
+  text-align: left !important;
+}
+
+.u-text-right {
+  text-align: right !important;
+}
+
+.u-font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+.u-font-sans {
+  font-family: var(--font-sans) !important;
+}
+
+/* ── Colors ── */
+.u-color-neon {
+  color: var(--color-neon) !important;
+}
+
+.u-color-dim {
+  color: var(--color-text-dim) !important;
+}

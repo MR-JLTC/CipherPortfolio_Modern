@@ -167,3 +167,13 @@ if (galleryTrack && prevBtn && nextBtn) {
     galleryTrack.scrollBy({ left: 300, behavior: 'smooth' });
   });
 }
+
+
+// ─── In your JS file or <script> tag ─────────────────────────────────────────
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const page = card.getAttribute('data-page');
+    if (page) window.location.href = page;
+    console.log(`Navigating to: ${page}`); // For debugging
+  });
+});

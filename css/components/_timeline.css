@@ -1,0 +1,99 @@
+/* ==========================================================================
+   COMPONENT / TIMELINE
+   Experience & Certifications timeline layout.
+   ========================================================================== */
+
+#certifications {
+  background: var(--color-bg2);
+}
+
+.timeline-dual {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: var(--space-xl);
+}
+
+.timeline-divider {
+  background: var(--color-border);
+  width: 1px;
+  height: 100%;
+}
+
+.timeline-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.timeline-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-white);
+  border-bottom: 2px solid var(--color-neon);
+  padding-bottom: var(--space-sm);
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+  align-self: flex-start;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.neon-arrow {
+  color: var(--color-neon);
+  font-size: 1.2rem;
+  line-height: 0.5;
+}
+
+.timeline-role {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.timeline-company {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+}
+
+.timeline-location {
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  line-height: 1.4;
+}
+
+.timeline-list {
+  list-style: none;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.timeline-list li {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+  position: relative;
+  line-height: 1.5;
+}
+
+.timeline-list li::before {
+  content: '\2022';
+  position: absolute;
+  left: -1rem;
+  color: var(--color-text-dim);
+}

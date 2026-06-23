@@ -1,0 +1,41 @@
+/* ==========================================================================
+   OBJECTS / LAYOUT
+   Structural patterns — containers, grids, wrappers.
+   These are content-agnostic and reusable across any component.
+   ========================================================================== */
+
+/* ── Section Container ── */
+.section-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--space-3xl);
+}
+
+/* ── Section Header ── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-neon);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.section-label::before {
+  content: '\25b8  ';
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--color-neon);
+  box-shadow: var(--shadow-neon-sm);
+  margin-bottom: var(--space-2xl);
+}
