@@ -1,44 +1,189 @@
 /* ==========================================================================
-   COMPONENT / BUTTON
-   Reusable button styles with modifiers.
+   _BTN.CSS
+   Professional button component — Cipher Portfolio.
+   Sits in the ITCSS component layer.
    ========================================================================== */
 
+/* ─────────────────────────────────────────────
+   Base
+   Shared foundation for every button variant.
+   ───────────────────────────────────────────── */
 .btn {
-  font-family: var(--font-mono);
-  font-size: var(--text-base);
-  letter-spacing: 0.08em;
-  padding: 0.75rem 1.8rem;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
+  justify-content: center;
+  gap: 0.45rem;
+
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-sm);   /* Sharp corners — professional, not bubbly */
+  border: 1px solid transparent;
+
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    color            var(--transition-fast),
+    background       var(--transition-fast),
+    border-color     var(--transition-fast),
+    box-shadow       var(--transition-fast),
+    transform        var(--transition-fast),
+    opacity          var(--transition-fast);
 }
 
-/* ── Primary ── */
+/* Subtle sweep highlight — activated on hover */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+}
+
+.btn:active {
+  transform: translateY(1px);   /* Subtle press-down — tactile, not bouncy */
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-neon);
+  outline-offset: 3px;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   Variant — Primary
+   Solid neon fill. For the single most important
+   CTA on any given view.
+   ───────────────────────────────────────────── */
 .btn--primary {
   background: var(--color-neon);
-  color: var(--color-bg);
-  border: 1px solid var(--color-neon);
-  font-weight: 700;
+  color: #050d05;                    /* Near-black text on bright neon — max contrast */
+  border-color: var(--color-neon);
+  box-shadow: 0 0 12px var(--color-neon-glow-sm);
 }
 
 .btn--primary:hover {
-  background: transparent;
-  color: var(--color-neon);
-  box-shadow: var(--shadow-neon-md);
+  background: #00e639;
+  border-color: #00e639;
+  color: #030a03;
+  box-shadow:
+    0 0 16px var(--color-neon-glow),
+    0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
-/* ── Outline ── */
-.btn--outline {
-  background: transparent;
-  color: var(--color-neon);
-  border: 1px solid var(--color-border);
+.btn--primary:active {
+  background: var(--color-neon-dim);
+  border-color: var(--color-neon-dim);
+  box-shadow: 0 0 8px var(--color-neon-glow-sm);
 }
 
-.btn--outline:hover {
-  border-color: var(--color-neon);
-  box-shadow: 0 0 15px var(--color-neon-glow-sm);
+
+/* ─────────────────────────────────────────────
+   Variant — Ghost / Outline
+   Transparent with neon border. Secondary actions.
+   ───────────────────────────────────────────── */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-neon);
+  border-color: var(--color-border);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-surface);
+  color: var(--color-white);
+  box-shadow: 0 0 12px var(--color-neon-glow-sm);
+}
+
+.btn--ghost:active {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-focus);
+}
+
+
+/* ─────────────────────────────────────────────
+   Variant — Danger
+   Destructive or high-risk actions.
+   ───────────────────────────────────────────── */
+.btn--danger {
+  background: transparent;
+  color: var(--color-danger);
+  border-color: rgba(255, 95, 87, 0.3);
+}
+
+.btn--danger:hover {
+  background: rgba(255, 95, 87, 0.08);
+  border-color: var(--color-danger);
+  box-shadow: 0 0 12px rgba(255, 95, 87, 0.2);
+}
+
+
+/* ─────────────────────────────────────────────
+   Size modifiers
+   ───────────────────────────────────────────── */
+.btn--sm {
+  font-size: var(--text-xs);
+  padding: 0.45rem 1rem;
+  letter-spacing: 0.06em;
+}
+
+.btn--lg {
+  font-size: var(--text-base);
+  padding: 0.85rem 2.2rem;
+  letter-spacing: 0.1em;
+}
+
+
+/* ─────────────────────────────────────────────
+   Icon modifier
+   Square ratio for standalone icon buttons.
+   ───────────────────────────────────────────── */
+.btn--icon {
+  padding: 0.65rem;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+}
+
+
+/* ─────────────────────────────────────────────
+   #get-key-btn  (page-specific)
+   Extends .btn.btn--primary with tighter spacing
+   suited to the sub-content layout.
+   ───────────────────────────────────────────── */
+#get-key-btn {
+  display: flex;
+  width: fit-content;
+  margin: 0px auto;
+  padding: 0.6rem 1.6rem;
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  border-radius: 13px;
 }

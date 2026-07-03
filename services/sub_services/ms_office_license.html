@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Office Installation & Licenses</title>
+  <link rel="icon" type="image/png" href="../../res/circle_logo.png" />
+  <link rel="icon" type="image/png" media="(prefers-color-scheme: light)" href="../../res/circle_logo.png" />
+  <link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="../../res/circle_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- Bootstrap Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../css/sub-page.css" />
+  <link rel="stylesheet" href="../../css/components/_license_directory.css" />
+</head>
+
+<body>
+  <main>
+    <nav class="sub-nav">
+      <a class="sub-nav__back" href="../license_manager.html"><i class="fas fa-arrow-left"></i> BACK</a>
+      <span class="sub-nav__sep">/</span>
+      <span class="sub-nav__path">services / license_manager/ <span> ms_office.app </span></span>
+    </nav>
+
+    <section class="sub-hero">
+      <div class="sub-hero__label">LICENSE_MANAGER.APP — ACTIVE</div>
+      <i class="fas fa-cogs sub-hero__icon"></i>
+      <h1 class="sub-hero__title">MS Office Installation & Licenses</h1>
+      <p class="sub-hero__desc">Genuine software, clean installs, and lifetime licenses — no subscriptions, no hassle.
+      </p>
+    </section>
+
+    <div class="sub-content">
+
+      <!-- GET KEY SECTION -->
+      <button id="get-key-btn" class="btn btn--primary" onclick="openModal('passkeyModal')"><i class="bi bi-shield-check"></i> PROCEED</button>
+      
+      <!-- MS OFFICE VERSION SECTION -->
+      <div class="section-card">
+        <div class="section-card__header">▸ MS OFFICE VERSIONS.list</div>
+        <div class="section-card__body">
+
+          <!-- Version tab bar -->
+          <div class="version-tabs" id="version-tabs">
+            <button class="version-tab active" onclick="switchVersion('microsoft365')" data-version="microsoft365">
+              <i class="bi bi-cloud"></i> Microsoft 365
+            </button>
+            <button class="version-tab" onclick="switchVersion('office2024')" data-version="office2024">
+              <i class="bi bi-folder2"></i> Office 2024
+            </button>
+            <button class="version-tab" onclick="switchVersion('office2021')" data-version="office2021">
+              <i class="bi bi-folder2"></i> Office 2021
+            </button>
+            <button class="version-tab" onclick="switchVersion('office2019')" data-version="office2019">
+              <i class="bi bi-folder2"></i> Office 2019
+            </button>
+            <button class="version-tab" onclick="switchVersion('office2016')" data-version="office2016">
+              <i class="bi bi-folder2"></i> Office 2016
+            </button>
+            <button class="version-tab" onclick="switchVersion('office2013')" data-version="office2013">
+              <i class="bi bi-folder2"></i> Office 2013
+            </button>
+          </div>
+
+          <!-- Product cards injected by JS -->
+          <div class="license-grid" id="office-versions"></div>
+        </div>
+      </div>
+
+      <!-- IMPORTANT SECTION -->
+      <div class="section-card">
+        <div class="section-card__header">▸ important_note.txt</div>
+        <div class="section-card__body">
+          <div class="note-box">
+            <strong>Note</strong>
+            All licenses provided are genuine and properly activated. Message me to ask about pricing, availability, and
+            which version is right for your setup before ordering.
+          </div>
+        </div>
+      </div>
+      <!-- GET IN TOUCH SECTION -->
+      <div class="cta-card">
+        <h2 class="cta-card__title">Need a license or installation?</h2>
+        <p class="cta-card__desc">Tell me what software you need and I'll sort it out.</p>
+        <a class="cta-btn" href="../../index.html#contact"><i class="fas fa-terminal"></i> Get in Touch</a>
+      </div>
+
+    </div>
+
+    <div class="status-bar">
+      <div class="status-bar__item"><span class="status-bar__dot"></span> SYSTEM ONLINE</div>
+      <div class="status-bar__item">MODULE: LICENSE_MANAGER.APP</div>
+      <div class="status-bar__item">STATUS: LICENSES AVAILABLE</div>
+    </div>
+
+    <!-- Supabase SDK & Config -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/supabaseConfig.js"></script>
+    <script src="../../js/license_directory.js"></script>
+  </main>
+  
+  <!-- ── PASSKEY MODAL ── -->
+    <div class="modal-overlay" id="passkeyModal" role="dialog" aria-modal="true" aria-labelledby="passkeyModalTitle">
+      <div class="modal-box">
+        <div class="modal-box__header">
+          <span class="modal-box__title" id="passkeyModalTitle"><i class="bi bi-shield-lock"></i> PASSKEY VERIFICATION</span>
+          <button class="modal-box__close" onclick="closeModal('passkeyModal')" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-box__body">
+          <p class="modal-box__desc">Enter your passkey to access download links.</p>
+          <form onsubmit="verifyPasskey(event)">
+            <div class="modal-field">
+              <label class="modal-field__label" for="passkey">PASSKEY</label>
+              <input class="modal-field__input" id="passkey" type="password" placeholder="Enter passkey..." autocomplete="off" />
+            </div>
+            <div class="modal-alert modal-alert--success" id="successMessage" style="display:none;">
+              <i class="bi bi-check-circle"></i> Verified! Access granted.
+            </div>
+            <div class="modal-alert modal-alert--error" id="errorMessage" style="display:none;">
+              <i class="bi bi-x-circle"></i> Incorrect passkey. Try again.
+            </div>
+            <div class="modal-box__actions">
+              <button type="button" class="btn btn--ghost" onclick="closeModal('passkeyModal')">Cancel</button>
+              <button type="submit" class="btn btn--primary" id="verifyBtn">
+                <i class="bi bi-check-circle"></i> Verify &amp; Continue
+              </button>
+            </div>
+          </form>
+          <!-- Activation command (shown after auth) -->
+          <div id="commandSection" style="display:none;" class="command-section">
+            <div class="command-section__label">ACTIVATION COMMAND</div>
+            <div class="command-section__block">
+              <code id="activationCommand">irm https://get.activated.win | iex</code>
+              <button class="btn btn--ghost btn--sm copy-btn" onclick="copyCommand()">
+                <i class="bi bi-clipboard"></i> Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DOWNLOAD OPTIONS MODAL ── -->
+    <div class="modal-overlay" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
+      <div class="modal-box">
+        <div class="modal-box__header">
+          <span class="modal-box__title" id="downloadModalTitle"><i class="bi bi-download"></i> SELECT DOWNLOAD</span>
+          <button class="modal-box__close" onclick="closeModal('downloadModal')" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-box__body">
+          <p class="modal-box__product-name" id="downloadTitle"></p>
+          <p class="modal-box__desc">Choose your installer type:</p>
+          <div class="download-options">
+            <button class="download-option" onclick="downloadOffice('online-x64')">
+              <i class="bi bi-cloud-download"></i>
+              <span class="download-option__label">Online Installer</span>
+              <span class="download-option__sub">64-bit (x64)</span>
+            </button>
+            <button class="download-option" onclick="downloadOffice('online-x32')">
+              <i class="bi bi-cloud-download"></i>
+              <span class="download-option__label">Online Installer</span>
+              <span class="download-option__sub">32-bit (x86)</span>
+            </button>
+            <button class="download-option" id="offlineOption" onclick="downloadOffice('offline-x32-x64')">
+              <i class="bi bi-hdd"></i>
+              <span class="download-option__label">Offline ISO</span>
+              <span class="download-option__sub">x32 + x64 Bundle</span>
+            </button>
+          </div>
+          <div class="modal-box__actions">
+            <button class="btn btn--ghost" onclick="closeModal('downloadModal')">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

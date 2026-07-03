@@ -1,0 +1,4 @@
+
+# Secrets
+.env
+js/supabaseConfig.js

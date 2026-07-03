@@ -30,7 +30,10 @@
 @import url('components/_process.css');       /* Development page */
 @import url('components/_note-box.css');      /* License page */
 
-/* ── 6. Animations ── */
+/* ── 6. Buttons ── */
+@import url('components/_btn.css');
+
+/* ── 7. Animations ── */
 @import url('animations/_keyframes.css');
 
 /* ── 7. Utilities ── */

@@ -95,10 +95,11 @@
 @media (max-width: 600px) {
   .sub-nav {
     padding: 0.8rem 1rem;
+    padding: var(--space)
   }
 
   .sub-hero {
-    padding: 2.5rem 1rem 2rem;
+    padding: var(--space-1lg) var(--space-md) var(--space-xl);
   }
 
   .sub-content {
