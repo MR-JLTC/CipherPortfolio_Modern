@@ -361,17 +361,22 @@ async function verifyPasskey(event) {
     }
 
     // Fetch the stored hashed passkey from Supabase
-    // Note: Assuming a table named 'passkeys' with a column named 'hash'
+    // Table: 'licenses', Column: 'key' (stores the SHA-256 hashed passkey)
     let storedHash = null;
     try {
         const { data, error } = await supabaseClient
             .from('licenses')
             .select('key')
             .limit(1)
-            .single();
+            .maybeSingle();  // returns null instead of throwing when 0 rows
 
         if (error) throw error;
-        storedHash = data.hash;
+
+        if (!data) {
+            throw new Error('No passkey record found in the licenses table.');
+        }
+
+        storedHash = data.key;
     } catch (error) {
         console.error("Error fetching passkey from Supabase:", error);
         showToast("Network Error: Could not connect to verification server.", 'error', 'bi-hdd-network');
@@ -383,6 +388,12 @@ async function verifyPasskey(event) {
     // Hash the input passkey
     const inputPasskey = passkeyInput.value;
     const hashedInput = await hashString(inputPasskey);
+
+    // ── DEV HELPER ──────────────────────────────────────────────────────────
+    // Copy this hash and INSERT it into Supabase: licenses.key
+    // SQL: INSERT INTO licenses (key) VALUES ('<hash>');
+    // console.log('%c[Passkey Hash] Copy this into Supabase → licenses.key:', 'color: #0ff; font-weight: bold;', hashedInput);
+    // ────────────────────────────────────────────────────────────────────────
 
     if (hashedInput === storedHash) {
         isAuthenticated = true;
