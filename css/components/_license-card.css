@@ -230,7 +230,7 @@
   border: 1px solid var(--color-border-hover);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 460px;
+  max-width: 540px;
   box-shadow: var(--shadow-xl), 0 0 30px var(--color-neon-glow-sm);
   transform: translateY(16px) scale(0.98);
   transition: transform var(--transition-base);
@@ -380,8 +380,12 @@
   flex-direction: column;
   gap: 0;
   margin-top: 0.4rem;
+  /* Bleed out of .modal-box__body padding so the block is full modal width */
+  margin-left: -1.2rem;
+  margin-right: -1.2rem;
+  margin-bottom: -1.4rem;
   border: 1px solid var(--color-neon);
-  border-radius: var(--radius-md);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
   overflow: hidden;
   box-shadow: 0 0 18px var(--color-neon-glow-sm), inset 0 0 12px rgba(57, 255, 20, 0.03);
   animation: cmd-reveal 0.4s ease both;
