@@ -264,9 +264,20 @@ function loadProducts(version) {
 // Initialize page
 document.addEventListener('DOMContentLoaded', function () {
     loadProducts('microsoft365');
+
+    // Restore auth state from session (persists until tab is closed)
+    if (sessionStorage.getItem('lic_auth') === 'true') {
+        isAuthenticated = true;
+    }
 });
 
 function openModal(modalId) {
+    // If already authenticated, skip the passkey modal entirely
+    if ((modalId === 'passkeyModal' || !modalId) && isAuthenticated) {
+        showToast('Already verified! Access granted.', 'success', 'bi-shield-check');
+        return;
+    }
+
     const modal = document.getElementById(modalId || 'passkeyModal');
     if (modal) {
         modal.classList.add('is-open');
@@ -392,13 +403,17 @@ async function verifyPasskey(event) {
     // ── DEV HELPER ──────────────────────────────────────────────────────────
     // Copy this hash and INSERT it into Supabase: licenses.key
     // SQL: INSERT INTO licenses (key) VALUES ('<hash>');
-    // console.log('%c[Passkey Hash] Copy this into Supabase → licenses.key:', 'color: #0ff; font-weight: bold;', hashedInput);
+    console.log('%c[Passkey Hash] Copy this into Supabase → licenses.key:', 'color: #0ff; font-weight: bold;', hashedInput);
     // ────────────────────────────────────────────────────────────────────────
 
     if (hashedInput === storedHash) {
         isAuthenticated = true;
+        sessionStorage.setItem('lic_auth', 'true');  // persist for this tab session
+
         successMessage.style.display = 'block';
         document.getElementById('commandSection').style.display = 'block';
+
+        showToast('Access granted! Passkey verified.', 'success', 'bi-shield-check', 4000);
 
         setTimeout(() => {
             closeModal('passkeyModal');
