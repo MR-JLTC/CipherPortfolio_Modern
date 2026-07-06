@@ -268,6 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Restore auth state from session (persists until tab is closed)
     if (sessionStorage.getItem('lic_auth') === 'true') {
         isAuthenticated = true;
+        showActivationCommand();  // restore the command bar on reload
     }
 });
 
@@ -295,6 +296,70 @@ function closeModal(modalId) {
     if (modal) {
         modal.classList.remove('is-open');
     }
+}
+
+// Shows the activation command bar on the page after successful verification
+function showActivationCommand() {
+    if (document.getElementById('activation-bar')) return; // already shown
+
+    const command = 'irm https://get.activated.win | iex';
+
+    const bar = document.createElement('div');
+    bar.id = 'activation-bar';
+    bar.style.cssText = [
+        'position: fixed',
+        'bottom: 1.5rem',
+        'left: 50%',
+        'transform: translateX(-50%)',
+        'z-index: 9999',
+        'background: linear-gradient(135deg, rgba(0,255,180,0.12), rgba(0,200,255,0.10))',
+        'border: 1px solid rgba(0,255,180,0.4)',
+        'border-radius: 10px',
+        'padding: 0.85rem 1.4rem',
+        'display: flex',
+        'align-items: center',
+        'gap: 1rem',
+        'backdrop-filter: blur(12px)',
+        'box-shadow: 0 0 24px rgba(0,255,180,0.2)',
+        'font-family: "JetBrains Mono", monospace',
+        'max-width: 90vw',
+        'animation: slideUp 0.4s ease',
+    ].join(';');
+
+    bar.innerHTML = `
+        <i class="bi bi-terminal" style="color:#00ffb4; font-size:1.1rem;"></i>
+        <span style="color:#00ffb4; font-size:0.75rem; letter-spacing:0.05em;">ACTIVATION CMD</span>
+        <code id="activation-bar-cmd"
+              style="color:#fff; background:rgba(0,0,0,0.4); padding:0.3rem 0.8rem;
+                     border-radius:6px; font-size:0.85rem; cursor:pointer;"
+              title="Click to copy">${command}</code>
+        <button onclick="copyActivationCmd(this)"
+                style="background:rgba(0,255,180,0.15); border:1px solid rgba(0,255,180,0.4);
+                       color:#00ffb4; border-radius:6px; padding:0.3rem 0.7rem;
+                       font-size:0.78rem; cursor:pointer; white-space:nowrap;">
+            <i class="bi bi-clipboard"></i> Copy
+        </button>
+    `;
+
+    document.body.appendChild(bar);
+
+    // Add slide-up animation if not already defined
+    if (!document.getElementById('activation-bar-style')) {
+        const style = document.createElement('style');
+        style.id = 'activation-bar-style';
+        style.textContent = `@keyframes slideUp { from { opacity:0; transform: translateX(-50%) translateY(20px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }`;
+        document.head.appendChild(style);
+    }
+}
+
+function copyActivationCmd(btn) {
+    const cmd = document.getElementById('activation-bar-cmd').textContent;
+    navigator.clipboard.writeText(cmd).then(() => {
+        const original = btn.innerHTML;
+        btn.innerHTML = '<i class="bi bi-check"></i> Copied!';
+        btn.style.color = '#fff';
+        setTimeout(() => { btn.innerHTML = original; btn.style.color = '#00ffb4'; }, 2000);
+    });
 }
 
 function showToast(message, type = 'info', icon = 'bi-info-circle', duration = 3000) {
@@ -414,6 +479,7 @@ async function verifyPasskey(event) {
         document.getElementById('commandSection').style.display = 'block';
 
         showToast('Access granted! Passkey verified.', 'success', 'bi-shield-check', 4000);
+        showActivationCommand();
 
         setTimeout(() => {
             closeModal('passkeyModal');
