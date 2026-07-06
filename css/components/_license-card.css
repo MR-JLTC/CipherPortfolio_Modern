@@ -369,40 +369,119 @@
   background: rgba(255, 95, 87, 0.06);
 }
 
-/* Activation command block */
+/* Activation command block — terminal panel style */
+@keyframes cmd-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .command-section {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-top: 0.2rem;
+  gap: 0;
+  margin-top: 0.4rem;
+  border: 1px solid var(--color-neon);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 0 18px var(--color-neon-glow-sm), inset 0 0 12px rgba(57, 255, 20, 0.03);
+  animation: cmd-reveal 0.4s ease both;
 }
 
+/* Terminal title bar */
 .command-section__label {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-neon);
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.command-section__block {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 0.55rem 0.8rem;
-  overflow-x: auto;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-dim);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-bg3);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.45rem 0.9rem;
 }
 
+/* Decorative traffic-light dots */
+.command-section__label::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-danger, #ff5f57);
+  box-shadow: 12px 0 0 #febc2e, 24px 0 0 var(--color-success, #28c840);
+  flex-shrink: 0;
+  margin-right: 1.1rem;
+}
+
+/* Command row: code + copy button stacked on mobile, inline on larger screens */
+.command-section__block {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: var(--color-bg);
+  min-height: 3rem;
+}
+
+/* Scrollable code area */
 .command-section__block code {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: 0.82rem;
   color: var(--color-neon);
   flex: 1;
   white-space: nowrap;
+  overflow-x: auto;
+  padding: 0.75rem 1rem;
+  text-shadow: 0 0 10px var(--color-neon-glow);
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.03em;
+  /* Scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.command-section__block code::-webkit-scrollbar {
+  height: 3px;
+}
+.command-section__block code::-webkit-scrollbar-track {
+  background: transparent;
+}
+.command-section__block code::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+/* Copy button — vertical separator, stands out */
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-neon);
+  background: transparent;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: rgba(57, 255, 20, 0.08);
+  color: var(--color-white);
+}
+
+.copy-btn i {
+  font-size: 0.85rem;
 }
 
 /* Download option tiles */
