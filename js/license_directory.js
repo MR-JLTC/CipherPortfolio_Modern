@@ -1,16 +1,23 @@
 // Initialize Supabase Client
+// Credentials are injected at build time by `generate-config.js` into `js/supabaseConfig.js`
+// as window.SUPABASE_URL and window.SUPABASE_ANON_KEY.
+// On Netlify: populated from the dashboard Environment Variables.
+// Locally: run `node generate-config.js` first (reads your .env file).
 let supabaseClient = null;
-if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY &&
-    window.SUPABASE_URL !== 'YOUR_SUPABASE_URL_HERE' &&
-    window.SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY_HERE') {
-    try {
-        supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-    } catch (error) {
-        console.error("Failed to initialize Supabase client. Please check your URL and Anon Key in .env", error);
+
+(function initSupabase() {
+    const url = window.SUPABASE_URL;
+    const key = window.SUPABASE_ANON_KEY;
+
+    if (!url || !key) {
+        console.error('Supabase init failed: window.SUPABASE_URL or window.SUPABASE_ANON_KEY is not defined. ' +
+            'Locally, run `node generate-config.js`. On Netlify, set the env vars in the dashboard.');
+        return;
     }
-} else {
-    console.warn("Supabase not configured. Please check js/supabaseConfig.js");
-}
+
+    supabaseClient = window.supabase.createClient(url, key);
+    console.log('Supabase client initialized.');
+})();
 
 let isAuthenticated = false;
 let currentProduct = '';
@@ -347,7 +354,7 @@ async function verifyPasskey(event) {
 
     // Check if Supabase is initialized
     if (!supabaseClient) {
-        showToast("System Error: Database not configured. Check js/supabaseConfig.js", 'error', 'bi-x-circle');
+        showToast("System Error: Supabase not configured. On Netlify, check Environment Variables. Locally, run: node generate-config.js", 'error', 'bi-x-circle');
         verifyBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Verify & Continue';
         verifyBtn.disabled = false;
         return;
