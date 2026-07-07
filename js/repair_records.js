@@ -10,15 +10,15 @@
  */
 
 // ─── Config ────────────────────────────────────────────────────────────────
-const RR_BUCKET       = 'repair_records';          // Storage bucket name
-const RR_TABLE        = 'repair_records';          // Table name
-const RR_ORDER_COL    = 'created_at';             // Sort column
-const RR_ORDER_ASC    = false;                    // newest first
+const RR_BUCKET = 'repair-photos';          // Storage bucket name
+const RR_TABLE = 'repair_records';          // Table name
+const RR_ORDER_COL = 'created_at';             // Sort column
+const RR_ORDER_ASC = false;                    // newest first
 
 // ─── State ─────────────────────────────────────────────────────────────────
-let allRecords        = [];                       // raw records from DB
-let lbImages          = [];                       // current lightbox image array
-let lbIndex           = 0;                        // current lightbox index
+let allRecords = [];                       // raw records from DB
+let lbImages = [];                       // current lightbox image array
+let lbIndex = 0;                        // current lightbox index
 
 // ─── Bootstrap on DOM ready ─────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,20 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         const lb = document.getElementById('rr-lightbox');
         if (!lb || !lb.classList.contains('is-open')) return;
-        if (e.key === 'ArrowLeft')  shiftLightbox(-1, e);
+        if (e.key === 'ArrowLeft') shiftLightbox(-1, e);
         if (e.key === 'ArrowRight') shiftLightbox(1, e);
-        if (e.key === 'Escape')     closeLightbox();
+        if (e.key === 'Escape') closeLightbox();
     });
 });
 
 // ─── Fetch & Render ─────────────────────────────────────────────────────────
 async function loadRepairRecords() {
-    const grid    = document.getElementById('rr-grid');
+    const grid = document.getElementById('rr-grid');
     const loading = document.getElementById('rr-loading');
-    const empty   = document.getElementById('rr-empty');
+    const empty = document.getElementById('rr-empty');
     const filters = document.getElementById('rr-filters');
-    const badge   = document.getElementById('rr-count-badge');
-    const sbItem  = document.getElementById('rr-status-bar-item');
+    const badge = document.getElementById('rr-count-badge');
+    const sbItem = document.getElementById('rr-status-bar-item');
 
     // Guard: supabase not ready yet (may initialise after DOMContentLoaded)
     await waitForSupabase();
@@ -87,7 +87,7 @@ async function loadRepairRecords() {
 }
 
 async function renderRecords(records) {
-    const grid  = document.getElementById('rr-grid');
+    const grid = document.getElementById('rr-grid');
     const empty = document.getElementById('rr-empty');
 
     // Clear previous cards (but keep the empty placeholder)
@@ -112,34 +112,34 @@ async function buildRecordCard(rec) {
     card.dataset.status = (rec.status || '').toLowerCase();
 
     const statusClass = statusToClass(rec.status);
-    const createdAt   = formatDate(rec.created_at);
-    const updatedAt   = formatDate(rec.updated_at);
+    const createdAt = formatDate(rec.created_at);
+    const updatedAt = formatDate(rec.updated_at);
 
     // ── Fields (handle flexible column names) ──────────────────────────────
-    const customerName  = rec.customer_name   || rec.customerName   || '—';
-    const deviceType    = rec.repair_type     || rec.device_type    || '—';
-    const deviceModel   = rec.device_model    || '';
-    const issue         = rec.customer_feedback || rec.issue_description || '—';
-    const status        = rec.status          || 'Completed';
-    const folderPath    = rec.customer_image_folder_path || rec.imageFolderPath || null;
-    const techNotes     = rec.technician_notes || '';
-    const cost          = rec.repair_cost     || null;
-    const customerRate  = rec.customer_rate   || null;
+    const customerName = rec.customer_name || rec.customerName || '—';
+    const deviceType = rec.repair_type || rec.device_type || '—';
+    const deviceModel = rec.device_model || '';
+    const issue = rec.customer_feedback || rec.issue_description || '—';
+    const status = rec.status || 'Completed';
+    const folderPath = rec.customer_image_folder_path || rec.imageFolderPath || null;
+    const techNotes = rec.technician_notes || '';
+    const cost = rec.repair_cost || null;
+    const customerRate = rec.customer_rate || null;
 
     // ── Load images from bucket ────────────────────────────────────────────
-    let imagesHtml   = '';
-    let imageUrls    = [];
+    let imagesHtml = '';
+    let imageUrls = [];
     let imageAltList = [];
 
     if (folderPath && supabaseClient) {
         const result = await fetchFolderImages(folderPath);
-        imageUrls    = result.urls;
+        imageUrls = result.urls;
         imageAltList = result.alts;
     }
 
     if (imageUrls.length > 0) {
         const thumbs = imageUrls.slice(0, 4).map((url, i) => {
-            const isExtra   = i === 3 && imageUrls.length > 4;
+            const isExtra = i === 3 && imageUrls.length > 4;
             const extraCount = imageUrls.length - 3;
             return `
             <button
@@ -221,21 +221,66 @@ async function buildRecordCard(rec) {
 }
 
 // ─── Storage helpers ─────────────────────────────────────────────────────────
+// async function fetchFolderImages(folderPath) {
+//     try {
+//         const { data, error } = await supabaseClient
+//             .storage
+//             .from(RR_BUCKET)
+//             .list(folderPath, { limit: 50, sortBy: { column: 'name', order: 'asc' } });
+
+//         if (error) {
+//             console.warn('[RepairRecords] Storage list error for folder:', folderPath, error);
+//             return { urls: [], alts: [] };
+//         }
+
+//         const imageFiles = (data || []).filter(f =>
+//             f.name && /\.(jpe?g|png|webp|gif|avif|heic|bmp)$/i.test(f.name)
+//         );
+
+//         const urls = imageFiles.map(f => {
+//             const { data: urlData } = supabaseClient
+//                 .storage
+//                 .from(RR_BUCKET)
+//                 .getPublicUrl(`${folderPath}/${f.name}`);
+//             return urlData.publicUrl;
+//         });
+
+//         const alts = imageFiles.map(f => f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '));
+
+//         return { urls, alts };
+//     } catch (err) {
+//         console.warn('[RepairRecords] fetchFolderImages error:', err);
+//         return { urls: [], alts: [] };
+//     }
+// }
+
 async function fetchFolderImages(folderPath) {
+    console.log('[RR-DEBUG] Fetching folder:', JSON.stringify(folderPath), 'from bucket:', RR_BUCKET);
     try {
         const { data, error } = await supabaseClient
             .storage
             .from(RR_BUCKET)
             .list(folderPath, { limit: 50, sortBy: { column: 'name', order: 'asc' } });
 
+        console.log('[RR-DEBUG] list() result — data:', data, 'error:', error);
+
         if (error) {
             console.warn('[RepairRecords] Storage list error for folder:', folderPath, error);
             return { urls: [], alts: [] };
         }
 
+        if (!data || data.length === 0) {
+            console.warn('[RR-DEBUG] list() returned EMPTY for folder:', folderPath);
+            return { urls: [], alts: [] };
+        }
+
+        console.log('[RR-DEBUG] Files found:', data.map(f => f.name));
+
         const imageFiles = (data || []).filter(f =>
             f.name && /\.(jpe?g|png|webp|gif|avif|heic|bmp)$/i.test(f.name)
         );
+
+        console.log('[RR-DEBUG] Files matching image regex:', imageFiles.map(f => f.name));
 
         const urls = imageFiles.map(f => {
             const { data: urlData } = supabaseClient
@@ -245,18 +290,19 @@ async function fetchFolderImages(folderPath) {
             return urlData.publicUrl;
         });
 
-        const alts = imageFiles.map(f => f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '));
+        console.log('[RR-DEBUG] Generated URLs:', urls);
 
+        const alts = imageFiles.map(f => f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '));
         return { urls, alts };
     } catch (err) {
-        console.warn('[RepairRecords] fetchFolderImages error:', err);
+        console.error('[RR-DEBUG] Exception:', err);
         return { urls: [], alts: [] };
     }
 }
 
 // ─── Filter ──────────────────────────────────────────────────────────────────
 function filterRepairRecords() {
-    const query  = (document.getElementById('rr-search')?.value || '').toLowerCase().trim();
+    const query = (document.getElementById('rr-search')?.value || '').toLowerCase().trim();
     const status = (document.getElementById('rr-status-filter')?.value || '').toLowerCase();
 
     const filtered = allRecords.filter(rec => {
@@ -269,7 +315,7 @@ function filterRepairRecords() {
             rec.customer_rate
         ].filter(Boolean).join(' ').toLowerCase();
 
-        const matchesQuery  = !query  || haystack.includes(query);
+        const matchesQuery = !query || haystack.includes(query);
         const matchesStatus = !status || (rec.status || '').toLowerCase() === status;
         return matchesQuery && matchesStatus;
     });
@@ -280,7 +326,7 @@ function filterRepairRecords() {
 // ─── Lightbox ────────────────────────────────────────────────────────────────
 function openLightbox(images, index) {
     lbImages = images;
-    lbIndex  = index;
+    lbIndex = index;
     updateLightbox();
     const lb = document.getElementById('rr-lightbox');
     if (lb) lb.classList.add('is-open');
@@ -300,10 +346,10 @@ function shiftLightbox(dir, event) {
 }
 
 function updateLightbox() {
-    const img     = document.getElementById('rr-lightbox-img');
+    const img = document.getElementById('rr-lightbox-img');
     const caption = document.getElementById('rr-lightbox-caption');
-    const prev    = document.getElementById('lb-prev');
-    const next    = document.getElementById('lb-next');
+    const prev = document.getElementById('lb-prev');
+    const next = document.getElementById('lb-next');
 
     if (!img) return;
     img.src = lbImages[lbIndex];
@@ -319,12 +365,12 @@ function updateLightbox() {
 function statusToClass(status = '') {
     const s = status.toLowerCase().replace(/\s+/g, '-');
     const map = {
-        'pending':     'pending',
+        'pending': 'pending',
         'in-progress': 'progress',
         'in progress': 'progress',
-        'completed':   'done',
-        'cancelled':   'cancelled',
-        'canceled':    'cancelled',
+        'completed': 'done',
+        'cancelled': 'cancelled',
+        'canceled': 'cancelled',
     };
     return map[s] || 'unknown';
 }
