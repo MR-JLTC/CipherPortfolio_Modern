@@ -264,12 +264,8 @@ function loadProducts(version) {
 // Initialize page
 document.addEventListener('DOMContentLoaded', function () {
     loadProducts('microsoft365');
-
-    // Restore auth state from session (persists until tab is closed)
-    if (sessionStorage.getItem('lic_auth') === 'true') {
-        isAuthenticated = true;
-        showActivationCommand();  // restore the command bar on reload
-    }
+    // Auth state is intentionally NOT restored on page load.
+    // Every page visit/refresh requires the user to re-enter the passkey.
 });
 
 function openModal(modalId) {
@@ -473,7 +469,7 @@ async function verifyPasskey(event) {
 
     if (hashedInput === storedHash) {
         isAuthenticated = true;
-        sessionStorage.setItem('lic_auth', 'true');  // persist for this tab session
+        // Auth is in-memory only — intentionally not persisted to sessionStorage.
 
         successMessage.style.display = 'block';
         document.getElementById('commandSection').style.display = 'block';
