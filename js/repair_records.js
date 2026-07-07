@@ -10,7 +10,7 @@
  */
 
 // ─── Config ────────────────────────────────────────────────────────────────
-const RR_BUCKET       = 'repair-images';          // Storage bucket name
+const RR_BUCKET       = 'repair_records';          // Storage bucket name
 const RR_TABLE        = 'repair_records';          // Table name
 const RR_ORDER_COL    = 'created_at';             // Sort column
 const RR_ORDER_ASC    = false;                    // newest first
@@ -117,13 +117,14 @@ async function buildRecordCard(rec) {
 
     // ── Fields (handle flexible column names) ──────────────────────────────
     const customerName  = rec.customer_name   || rec.customerName   || '—';
-    const deviceType    = rec.device_type     || rec.deviceType     || '—';
-    const deviceModel   = rec.device_model    || rec.deviceModel    || '';
-    const issue         = rec.issue_description || rec.issueDescription || rec.issue || '—';
-    const status        = rec.status          || 'Unknown';
+    const deviceType    = rec.repair_type     || rec.device_type    || '—';
+    const deviceModel   = rec.device_model    || '';
+    const issue         = rec.customer_feedback || rec.issue_description || '—';
+    const status        = rec.status          || 'Completed';
     const folderPath    = rec.customer_image_folder_path || rec.imageFolderPath || null;
-    const techNotes     = rec.technician_notes || rec.technicianNotes || '';
-    const cost          = rec.repair_cost     || rec.repairCost     || null;
+    const techNotes     = rec.technician_notes || '';
+    const cost          = rec.repair_cost     || null;
+    const customerRate  = rec.customer_rate   || null;
 
     // ── Load images from bucket ────────────────────────────────────────────
     let imagesHtml   = '';
@@ -186,13 +187,18 @@ async function buildRecordCard(rec) {
 
       <div class="rr-card__body">
         <div class="rr-row">
-          <i class="bi bi-laptop"></i>
+          <i class="bi bi-tools"></i>
           <span><strong>${escHtml(deviceType)}</strong>${deviceModel ? ' · ' + escHtml(deviceModel) : ''}</span>
         </div>
         <div class="rr-row">
-          <i class="bi bi-exclamation-circle"></i>
+          <i class="bi bi-chat-right-quote"></i>
           <span>${escHtml(issue)}</span>
         </div>
+        ${customerRate ? `
+        <div class="rr-row">
+          <i class="bi bi-star-fill" style="color: #ffd700;"></i>
+          <span><strong>${customerRate} / 5</strong> Rating</span>
+        </div>` : ''}
         ${techNotes ? `
         <div class="rr-row rr-row--notes">
           <i class="bi bi-chat-left-text"></i>
@@ -256,10 +262,11 @@ function filterRepairRecords() {
     const filtered = allRecords.filter(rec => {
         const haystack = [
             rec.customer_name, rec.customerName,
-            rec.device_type,   rec.deviceType,
-            rec.device_model,  rec.deviceModel,
-            rec.issue_description, rec.issueDescription, rec.issue,
-            rec.technician_notes, rec.technicianNotes
+            rec.repair_type, rec.device_type,
+            rec.device_model,
+            rec.customer_feedback, rec.issue_description,
+            rec.technician_notes,
+            rec.customer_rate
         ].filter(Boolean).join(' ').toLowerCase();
 
         const matchesQuery  = !query  || haystack.includes(query);

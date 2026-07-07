@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/supabaseConfig.js"></script>
+</head>
+<body>
+    <script>
+        const supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+        async function test() {
+            console.log("Checking bucket repair_records");
+            const res1 = await supabase.storage.from('repair_records').list('records/monalou_cruz_1783397944441_e525c8');
+            console.log("res1", JSON.stringify(res1));
+
+            console.log("Checking bucket repair-images");
+            const res2 = await supabase.storage.from('repair-images').list('records/monalou_cruz_1783397944441_e525c8');
+            console.log("res2", JSON.stringify(res2));
+            
+            document.body.innerHTML += "DONE";
+        }
+        test();
+    </script>
+</body>
+</html>
