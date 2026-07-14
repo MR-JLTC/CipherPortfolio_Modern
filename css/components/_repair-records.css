@@ -294,8 +294,8 @@
 
 .rr-thumb {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 84px;
+  height: 84px;
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--color-border);

@@ -36,6 +36,7 @@
 
 /* ── 7. Utilities (Single-purpose helper classes) ── */
 @import url('utilities/_helpers.css');
+@import url('utilities/_no-zoom.css');
 
 /* ── 8. Responsive (Media queries) ── */
 @import url('responsive/_breakpoints.css');

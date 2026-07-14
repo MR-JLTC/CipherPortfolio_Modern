@@ -1,0 +1,29 @@
+/* ==========================================================================
+   NO-ZOOM UTILITY
+   CSS-based zoom prevention layer.
+   Prevents touch-based zoom gestures and enforces fixed scaling.
+   ========================================================================== */
+
+/* ── 1. Disable touch-action zoom on the entire document ──
+   touch-action: manipulation allows scrolling and single-tap but disables
+   pinch-to-zoom and double-tap-to-zoom on touch devices.
+   This is the most reliable CSS-only method for preventing touch zoom. */
+html {
+  touch-action: manipulation;
+}
+
+/* Apply to all interactive and content elements as well */
+body,
+body * {
+  touch-action: manipulation;
+}
+
+/* ── 2. Disable text size adjustment on mobile ──
+   Prevents mobile browsers from automatically inflating text sizes,
+   which can interfere with the intended layout at 100% zoom. */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}

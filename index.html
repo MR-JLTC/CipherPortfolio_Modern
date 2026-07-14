@@ -3,19 +3,24 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Cipher</title>
   <link rel="icon" type="image/png" href="res/circle_logo.png" />
   <link rel="icon" type="image/png" media="(prefers-color-scheme: light)" href="res/circle_logo.png" />
-  <link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="res/circle_logo.png" /> 
+  <link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="res/circle_logo.png" />
   <meta name="description"
     content="Portfolio of Jhon Lloyd T. Cruz — Full Stack Developer specializing in web, mobile, and secure software development." />
   <meta property="og:title" content="Cipher | Full Stack Developer Portfolio" />
   <meta property="og:description"
     content="Full Stack Developer — web, mobile, console, and cybersecurity enthusiast." />
   <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/_section-card.css" />
+  <link rel="stylesheet" href="css/components/_repair-records.css" />
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+    rel="stylesheet" />
 </head>
 
 <body>
@@ -100,19 +105,23 @@
               <span class="terminal-bar__title">cipher@kali:~</span>
             </div>
             <div class="terminal-body">
-              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">whoami</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">whoami</span>
+              </div>
               <div class="terminal-out"><span class="neon">mr_cipher</span></div>
-              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">cat info.txt</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">cat
+                  info.txt</span></div>
               <div class="terminal-out">Name: <span class="neon">Jhon Lloyd T. Cruz</span></div>
               <div class="terminal-out">Role: <span class="neon">Full Stack Developer</span></div>
               <div class="terminal-out">Location: <span class="neon">Philippines</span></div>
               <div class="terminal-out">Focus: <span class="neon">Full Stack Development</span></div>
               <div class="terminal-out">Status: <span class="neon">Available</span></div>
-              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">cat hobbies.txt</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd">cat
+                  hobbies.txt</span></div>
               <div class="terminal-out">Mobile Application Development,</div>
               <div class="terminal-out">Console Application Development,</div>
               <div class="terminal-out">Full Stack Development</div>
-              <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd cursor-blink">_</span></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span><span
+                  class="terminal-cmd cursor-blink">_</span></div>
             </div>
           </div>
         </div>
@@ -313,6 +322,7 @@
     <div class="section-wrap">
       <p class="section-label reveal">services</p>
       <h2 class="section-title reveal">What I Offer</h2>
+      <a href="#repair-records">See proofs</a>
       <div class="section-divider reveal"></div>
       <div class="services-grid reveal">
         <!-- Service 1: Development -->
@@ -361,7 +371,7 @@
         </div>
 
         <!-- Service 3: Software Licenses -->
-        <div class="service-card"  data-page="services/license_manager.html">
+        <div class="service-card" data-page="services/license_manager.html">
           <div class="service-card__header">
             <span class="service-card__module">LICENSE_MANAGER.app</span>
             <span class="service-card__badge service-card__badge--active">ACTIVE</span>
@@ -384,6 +394,69 @@
       </div>
     </div>
   </section>
+
+  <!-- REPAIR RECORDS -->
+  <section id="repair-records">
+    <div class="section-wrap">
+      <p class="section-label reveal">repair_logs</p>
+      <h2 class="section-title reveal">Repair Records</h2>
+      <div class="section-divider reveal"></div>
+
+      <div class="section-card reveal" id="repair-records-section">
+        <div class="section-card__header">
+          ▸ repair_records.db
+          <span class="rr-badge" id="rr-count-badge" style="display:none;"></span>
+        </div>
+        <div class="section-card__body">
+
+          <!-- Filter bar -->
+          <div class="rr-filters" id="rr-filters" style="display:none;">
+            <div class="rr-search-wrap">
+              <i class="bi bi-search rr-search-icon"></i>
+              <!-- <input id="rr-search" class="rr-search" type="text" placeholder="Search by customer, device or issue..."
+                oninput="filterRepairRecords()" /> -->
+              <input id="rr-search" class="rr-search" type="text" placeholder="This feature is under development..."
+                oninput="filterRepairRecords()" disabled />
+            </div>
+            <select id="rr-status-filter" class="rr-select" onchange="filterRepairRecords()">
+              <option value="">All Status</option>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <!-- Record grid -->
+          <div class="rr-grid" id="rr-grid">
+            <!-- Skeleton loaders shown while fetching -->
+            <div class="rr-skeleton" id="rr-loading">
+              <div class="rr-skeleton__card"></div>
+              <div class="rr-skeleton__card"></div>
+              <div class="rr-skeleton__card"></div>
+            </div>
+            <p class="rr-empty" id="rr-empty" style="display:none;">
+              <i class="bi bi-inbox"></i> No repair records found.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE LIGHTBOX MODAL -->
+  <div class="rr-lightbox" id="rr-lightbox" onclick="closeLightbox()">
+    <button class="rr-lightbox__close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+    <button class="rr-lightbox__nav rr-lightbox__nav--prev" id="lb-prev" onclick="shiftLightbox(-1, event)"
+      aria-label="Previous image"><i class="bi bi-chevron-left"></i></button>
+    <div class="rr-lightbox__content" onclick="event.stopPropagation()">
+      <img id="rr-lightbox-img" src="" alt="" />
+      <div class="rr-lightbox__caption" id="rr-lightbox-caption"></div>
+    </div>
+    <button class="rr-lightbox__nav rr-lightbox__nav--next" id="lb-next" onclick="shiftLightbox(1, event)"
+      aria-label="Next image"><i class="bi bi-chevron-right"></i></button>
+  </div>
 
   <!-- PROJECTS -->
   <section id="projects">
@@ -739,6 +812,10 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseConfig.js"></script>
+  <script src="js/repair_records.js"></script>
+  <script src="js/no-zoom.js"></script>
   <script src="js/main.js"></script>
 </body>
 
