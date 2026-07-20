@@ -113,7 +113,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.add('active');
     const filter = btn.dataset.filter;
     document.querySelectorAll('.project-card').forEach(card => {
-      if (filter === 'all' || card.dataset.category === filter) {
+      const categories = card.dataset.category.split(' ');
+      if (filter === 'all' || categories.includes(filter)) {
         card.classList.remove('hidden');
       } else {
         card.classList.add('hidden');
@@ -125,7 +126,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 // ─── Contact Form ───────────────────────────────────────────────
 document.getElementById('contact-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const subject = document.getElementById('subject').value;
@@ -177,3 +178,201 @@ document.querySelectorAll('.service-card').forEach(card => {
     console.log(`Navigating to: ${page}`); // For debugging
   });
 });
+
+// ─── APK Modal ──────────────────────────────────────────────────
+const apkData = {
+  readify: {
+    title: 'Readify',
+    category: 'MOBILE',
+    folder: 'res/projects/readify',
+    images: ['1.jpg', '2.jpg', '3.jpg'],
+    versions: [
+      { name: 'V1.0', date: 'Initial Release', url: 'https://github.com/MR-JLTC/Readify/releases/tag/V1.0' }
+      // You can add more versions here!
+    ]
+  },
+  // Add other mobile apps here later!
+  fintract: {
+    title: 'Fintract',
+    category: 'MOBILE',
+    folder: 'res/projects/fintract',
+    images: ['1.jpg', '2.jpg', '3.jpg'],
+    versions: [
+      { name: 'Latest', date: 'Stable Build', url: 'https://github.com/MR-JLTC/FINTRACT' }
+    ]
+  },
+  shadowcrypt: {
+    title: 'ShadowCrypt',
+    category: 'MULTI-PLATFORM',
+    folder: 'res/projects/shadowcrypt',
+    images: ['1.jpg', '2.jpg', '3.jpg', '4.png', '5.png', '6.png', '7.png', '8.png'],
+    versions: [
+      { name: 'Mobile v3.7(.apk)', date: 'Android Edition', url: 'https://github.com/MR-JLTC/ShadowCrypt/releases/download/v3.7/ShadowCrypt.apk' },
+      { name: 'System v3.0 (.exe)', date: 'Desktop Edition', url: 'https://github.com/MR-JLTC/ShadowCrypt/releases/download/v3.7/Setup_ShadowCryptV3.0.exe' },
+      { name: 'Library v2.0 (jar)', date: 'Developer Integration', url: 'https://github.com/MR-JLTC/ShadowCrypt/releases/download/v3.7/ShadowCryptLibV2.0.jar' }
+    ]
+  },
+  viora: {
+    title: 'Viora',
+    category: 'MOBILE', // Multi-Platform soon...
+    folder: 'res/projects/viora',
+    images: ['1.jpg', '2.jpg', '3.jpg', '4.png', '5.png', '6.png', '7.png', '8.png'],
+    versions: [
+      { name: 'Mobile v1.0(.apk)', date: 'Android Edition', url: 'https://github.com/MR-JLTC/Viora/releases/download/EarlyBird/viora_v1.apk' }
+    ]
+  }
+};
+
+function openApkModal(e, projectId) {
+  if (e) e.preventDefault();
+
+  const modal = document.getElementById("apk-modal");
+  const data = apkData[projectId];
+
+  if (!modal || !data) return;
+
+  // ============================
+  // Populate Header
+  // ============================
+  modal.querySelector(".apk-modal-title").textContent = data.title;
+  modal.querySelector(".proj-cat").textContent = data.category;
+
+  // ============================
+  // Populate Gallery
+  // ============================
+  const track = document.getElementById("apk-gallery-track");
+  track.innerHTML = "";
+
+  data.images.forEach(img => {
+
+    const wrap = document.createElement("div");
+    wrap.className = "apk-screenshot-wrap";
+
+    const image = document.createElement("img");
+    image.src = `${data.folder}/${img}`;
+    image.alt = `${data.title} Screenshot`;
+    image.className = "apk-screenshot";
+    image.loading = "lazy";
+
+    // Hide if image fails to load
+    image.onerror = function () {
+      wrap.remove();
+      setTimeout(updateApkGalleryButtons, 50);
+    };
+
+    // Fullscreen when clicked
+    image.addEventListener("click", function () {
+      openImageViewer(this.src);
+    });
+
+    wrap.appendChild(image);
+    track.appendChild(wrap);
+  });
+
+  // ============================
+  // Populate Downloads
+  // ============================
+  const versionList = modal.querySelector(".apk-versions-list");
+  versionList.innerHTML = "";
+
+  data.versions.forEach(ver => {
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+            <div class="apk-version-info">
+                <span class="apk-version-name">${ver.name}</span>
+                <span class="apk-version-date">${ver.date}</span>
+            </div>
+
+            <a href="${ver.url}"
+               target="_blank"
+               class="btn btn--primary btn--sm apk-download-btn">
+                <i class="fas fa-download"></i>
+                Download
+            </a>
+        `;
+
+    versionList.appendChild(li);
+  });
+
+  // Reset gallery scroll
+  track.scrollLeft = 0;
+
+  // Show modal
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+
+  // Update gallery buttons
+  setTimeout(updateApkGalleryButtons, 100);
+}
+
+function openImageViewer(src) {
+  const viewer = document.getElementById("image-viewer");
+  const img = document.getElementById("image-viewer-img");
+  img.src = src;
+  viewer.style.display = "flex";
+}
+
+function closeImageViewer() {
+  const viewer = document.getElementById("image-viewer");
+  viewer.style.display = "none";
+}
+
+document.getElementById("image-viewer").addEventListener("click", function (e) {
+  if (e.target === this) {
+    closeImageViewer();
+  }
+
+});
+
+document.querySelector(".image-viewer-close").addEventListener("click", closeImageViewer);
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeImageViewer();
+  }
+
+});
+
+function updateApkGalleryButtons() {
+  const track = document.getElementById('apk-gallery-track');
+  const prevBtn = document.querySelector('.apk-gallery-btn.prev');
+  const nextBtn = document.querySelector('.apk-gallery-btn.next');
+
+  if (track && prevBtn && nextBtn) {
+    // If the content is wider than the container, show buttons
+    if (track.scrollWidth > track.clientWidth) {
+      prevBtn.style.display = 'flex';
+      nextBtn.style.display = 'flex';
+    } else {
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+    }
+  }
+}
+
+window.addEventListener('resize', () => {
+  const modal = document.getElementById('apk-modal');
+  if (modal && modal.style.display === 'flex') {
+    updateApkGalleryButtons();
+  }
+});
+
+function closeApkModal(e) {
+  if (e) e.stopPropagation();
+  const modal = document.getElementById('apk-modal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+function scrollApkGallery(direction, e) {
+  if (e) e.stopPropagation();
+  const track = document.getElementById('apk-gallery-track');
+  if (track) {
+    const scrollAmount = 220 * direction;
+    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+}

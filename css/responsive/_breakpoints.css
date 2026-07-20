@@ -279,3 +279,36 @@
     padding: 0.8rem 1rem;
   }
 }
+
+/* ── APK Modal Responsiveness ── */
+@media (max-width: 768px) {
+  .apk-modal-overlay {
+    padding: var(--space-xs);
+  }
+
+  .apk-modal-content {
+    max-height: 95vh;
+  }
+
+  .apk-modal-body {
+    padding: var(--space-sm);
+  }
+
+  .apk-screenshot-wrap {
+    width: 150px;
+    height: 260px;
+  }
+
+  .apk-gallery-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .apk-gallery-btn.prev {
+    left: -5px;
+  }
+
+  .apk-gallery-btn.next {
+    right: -5px;
+  }
+}

@@ -458,6 +458,51 @@
       aria-label="Next image"><i class="bi bi-chevron-right"></i></button>
   </div>
 
+  <!-- APK DOWNLOAD MODAL -->
+  <div class="apk-modal-overlay" id="apk-modal" onclick="closeApkModal(event)">
+    <div class="apk-modal-content" onclick="event.stopPropagation()">
+      <button class="apk-modal-close" onclick="closeApkModal(event)" aria-label="Close modal">&times;</button>
+      <div class="apk-modal-header">
+        <h3 class="apk-modal-title">Readify</h3>
+        <span class="proj-cat">MOBILE</span>
+      </div>
+      <div class="apk-modal-body">
+        <div class="apk-gallery-container">
+          <button class="apk-gallery-btn prev" onclick="scrollApkGallery(-1, event)"><i
+              class="fas fa-chevron-left"></i></button>
+          <div class="apk-gallery-track" id="apk-gallery-track">
+            <div class="apk-screenshot-wrap"><img src="res/readify/1.jpg" alt="Readify Screenshot 1"
+                class="apk-screenshot" onerror="this.style.display='none'"></div>
+            <div class="apk-screenshot-wrap"><img src="res/readify/2.jpg" alt="Readify Screenshot 2"
+                class="apk-screenshot" onerror="this.style.display='none'"></div>
+            <div class="apk-screenshot-wrap"><img src="res/readify/3.jpg" alt="Readify Screenshot 3"
+                class="apk-screenshot" onerror="this.style.display='none'"></div>
+          </div>
+          <button class="apk-gallery-btn next" onclick="scrollApkGallery(1, event)"><i
+              class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="apk-downloads-section">
+          <h4 class="apk-downloads-title">Available Versions</h4>
+          <ul class="apk-versions-list">
+            <li>
+              <div class="apk-version-info">
+                <span class="apk-version-name">V1.0</span>
+                <span class="apk-version-date">Initial Release</span>
+              </div>
+              <a href="https://github.com/MR-JLTC/Readify/releases/tag/V1.0" target="_blank"
+                class="btn btn--primary btn--sm apk-download-btn"><i class="fas fa-download"></i> Download</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="image-viewer" class="image-viewer">
+    <button class="image-viewer-close">&times;</button>
+    <img id="image-viewer-img" alt="Preview">
+  </div>
+
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-wrap">
@@ -488,31 +533,29 @@
           <div class="project-tags">
             <span class="tag">Java</span>
           </div>
-          <a href="https://github.com/MR-JLTC/Readify/releases/tag/V1.0" target="_blank"
-            class="proj-link">[VIEW_PROJECT]</a>
+          <a onclick="openApkModal(event, 'readify')" class="proj-link" style="cursor: pointer;">GET APK</a>
         </div>
 
         <!-- Fintract -->
-        <div class="project-card reveal" data-category="mobile">
-          <div class="project-meta">
-            <span class="proj-status proj-status--live">LIVE</span>
-            <span class="proj-cat">MOBILE</span>
-            <span class="proj-id">TARGET_ID: 0x0A2</span>
-          </div>
-          <div class="project-title">Fintract</div>
-          <div class="project-desc">Dual-platform financial tracker for personal budgeting and expense monitoring
-            (Console + Android).</div>
-          <div class="project-tags">
-            <span class="tag">Java</span>
-          </div>
-          <a href="https://github.com/MR-JLTC/FINTRACT" class="proj-link">[VIEW_PROJECT]</a>
-        </div>
-
-        <!-- ShadowCrypt -->
         <div class="project-card reveal" data-category="system">
           <div class="project-meta">
             <span class="proj-status proj-status--live">LIVE</span>
-            <span class="proj-cat">SYSTEM</span>
+            <span class="proj-cat">MULTI</span>
+            <span class="proj-id">TARGET_ID: 0x0A2</span>
+          </div>
+          <div class="project-title">Fintract</div>
+          <div class="project-desc">Financial tracker for personal budgeting and expense monitoring</div>
+          <div class="project-tags">
+            <span class="tag">Java</span>
+          </div>
+          <a href="https://github.com/MR-JLTC/FINTRACT" class="proj-link">[VIEW_PROJECT (.exe)]</a>
+        </div>
+
+        <!-- ShadowCrypt -->
+        <div class="project-card reveal" data-category="system mobile">
+          <div class="project-meta">
+            <span class="proj-status proj-status--live">LIVE</span>
+            <span class="proj-cat">MULTI</span>
             <span class="proj-id">TARGET_ID: 0x0A3</span>
           </div>
           <div class="project-title">ShadowCrypt</div>
@@ -520,7 +563,7 @@
           <div class="project-tags">
             <span class="tag">Java</span>
           </div>
-          <a href="https://github.com/MR-JLTC/ShadowCrypt" class="proj-link">[VIEW_PROJECT]</a>
+          <a onclick="openApkModal(event, 'shadowcrypt')" class="proj-link" style="cursor: pointer;">VIEW VERSIONS</a>
         </div>
 
         <!-- CyberZone -->
@@ -536,7 +579,23 @@
           <div class="project-tags">
             <span class="tag">C</span>
           </div>
-          <a href="https://github.com/MR-JLTC/CyberZone" class="proj-link">[VIEW_PROJECT]</a>
+          <a href="https://github.com/MR-JLTC/CyberZone" class="proj-link">[VIEW_PROJECT (.exe)]</a>
+        </div>
+
+        <!-- Viora -->
+        <div class="project-card reveal" data-category="mobile">
+          <div class="project-meta">
+            <span class="proj-status proj-status--live">LIVE</span>
+            <span class="proj-cat">MOBILE</span>
+            <span class="proj-id">TARGET_ID: 0x0A5</span>
+          </div>
+          <div class="project-title">Viora</div>
+          <div class="project-desc">A mobile app for downloading videos/audios from supported platforms.</div>
+          <div class="project-tags">
+            <span class="tag">Flutter</span>
+            <span class="tag">Dart</span>
+          </div>
+          <a onclick="openApkModal(event, 'viora')" class="proj-link">GET APK</a>
         </div>
 
         <!-- SFSEAS -->
@@ -552,7 +611,7 @@
           <div class="project-tags">
             <span class="tag">Java</span>
           </div>
-          <a href="#" class="proj-link">[VIEW_PROJECT]</a>
+          <a class="proj-link">NOT_ACCESSIBLE</a>
         </div>
 
         <!-- Monkey Detection -->
@@ -569,7 +628,7 @@
             <span class="tag">Java</span>
             <span class="tag">Python</span>
           </div>
-          <a href="#" class="proj-link">[VIEW_PROJECT]</a>
+          <a class="proj-link">NOT_ACCESSIBLE</a>
         </div>
 
         <!-- SGLF Scanner -->
@@ -586,11 +645,11 @@
             <span class="tag">Java</span>
             <span class="tag">Python</span>
           </div>
-          <a href="#" class="proj-link">[VIEW_PROJECT]</a>
+          <a class="proj-link">NOT_ACCESSIBLE</a>
         </div>
 
         <!-- Memory Quest -->
-        <div class="project-card reveal" data-category="mobile">
+        <div class="project-card reveal" data-category="web">
           <div class="project-meta">
             <span class="proj-status proj-status--live">LIVE</span>
             <span class="proj-cat">MOBILE</span>
@@ -605,7 +664,7 @@
             <span class="tag">CSS</span>
             <span class="tag">JS</span>
           </div>
-          <a href="https://github.com/MR-JLTC/Memory_Card-Game" class="proj-link">[VIEW_PROJECT]</a>
+          <a href="https://mr-jltc.github.io/Memory_Card-Game/" class="proj-link" target="_blank">Visit</a>
         </div>
 
         <!-- Queueing System -->
@@ -623,7 +682,7 @@
             <span class="tag">NestJS</span>
             <span class="tag">ReactJS</span>
           </div>
-          <a href="https://github.com/MR-JLTC/Queueing-System" class="proj-link">[VIEW_PROJECT]</a>
+          <a href="https://github.com/MR-JLTC/Queueing-System" class="proj-link">View Project</a>
         </div>
 
         <!-- Phonebook Desktop -->
@@ -659,7 +718,7 @@
             <span class="tag">NestJS</span>
             <span class="tag">PostgreSQL</span>
           </div>
-          <a href="https://tutorfriends.online/" target="_blank" class="proj-link">[VISIT]</a>
+          <a href="https://tutorfriends.online/" target="_blank" class="proj-link" target="_blank">Visit</a>
         </div>
 
       </div>
