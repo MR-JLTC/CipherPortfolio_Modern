@@ -216,7 +216,7 @@ const apkData = {
     title: 'Viora',
     category: 'MOBILE', // Multi-Platform soon...
     folder: 'res/projects/viora',
-    images: ['1.jpg', '2.jpg', '3.jpg', '4.png', '5.png', '6.png', '7.png', '8.png'],
+    images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
     versions: [
       { name: 'Mobile v1.0(.apk)', date: 'Android Edition', url: 'https://github.com/MR-JLTC/Viora/releases/download/EarlyBird/viora_v1.apk' }
     ]
