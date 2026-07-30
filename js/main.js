@@ -172,8 +172,10 @@ if (galleryTrack && prevBtn && nextBtn) {
 
 // ─── In your JS file or <script> tag ─────────────────────────────────────────
 document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const page = card.getAttribute('data-page');
+  card.addEventListener('click', (e) => {
+    // const page = card.getAttribute('data-page');
+    const item = e.target.closest('li');
+    const page = item.dataset.page;
     if (page) window.location.href = page;
     console.log(`Navigating to: ${page}`); // For debugging
   });

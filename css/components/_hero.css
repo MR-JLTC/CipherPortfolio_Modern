@@ -3,11 +3,26 @@
    Homepage hero section with glitch title and typing effect.
    ========================================================================== */
 
-#hero {
+/* #hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 0 var(--space-3xl);
+}
+
+.hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+} */
+#hero {
+  padding: var(--space-3xl);
+  padding-top: calc(var(--header-height, 80px) + var(--space-3xl));
+  padding-left: calc(var(--space-3xl) + 5rem);
 }
 
 .hero-inner {
