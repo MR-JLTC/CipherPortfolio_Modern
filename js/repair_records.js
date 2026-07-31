@@ -384,16 +384,17 @@ async function buildGroupCard(group) {
 
           ${imagesHtml}
 
-          <div class="rr-card__footer" ${idx < records.length - 1 ? 'style="border-bottom: 0;"' : ''}>
-            <span class="rr-date">
-              <i class="bi bi-calendar-event"></i> ${createdAt}
-              ${updatedAt && updatedAt !== createdAt ? `<span class="rr-date__updated"> · Updated ${updatedAt}</span>` : ''}
-            </span>
-            ${costHtml}
-          </div>
+          
         `;
     }
-
+    //Putted after ${imagesHtml}
+    // <div class="rr-card__footer" ${idx < records.length - 1 ? 'style="border-bottom: 0;"' : ''}>
+    //         <span class="rr-date">
+    //           <i class="bi bi-calendar-event"></i> ${createdAt}
+    //           ${updatedAt && updatedAt !== createdAt ? `<span class="rr-date__updated"> · Updated ${updatedAt}</span>` : ''}
+    //         </span>
+    //         ${costHtml}
+    //       </div>  
     card.innerHTML = innerHtml;
     return card;
 }
