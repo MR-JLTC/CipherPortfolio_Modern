@@ -21,10 +21,12 @@ function initMatrix() {
 initMatrix();
 window.addEventListener('resize', initMatrix);
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function drawMatrix() {
-  ctx.fillStyle = 'rgba(8, 12, 8, 0.05)';
+  ctx.fillStyle = 'rgba(9, 13, 17, 0.08)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#00ff41';
+  ctx.fillStyle = '#10b981';
   ctx.font = `${fontSize}px JetBrains Mono, monospace`;
 
   for (let i = 0; i < drops.length; i++) {
@@ -34,7 +36,10 @@ function drawMatrix() {
     drops[i]++;
   }
 }
-setInterval(drawMatrix, 45);
+
+if (!prefersReducedMotion) {
+  setInterval(drawMatrix, 55);
+}
 
 // ─── Typing Effect ──────────────────────────────────────────────
 const titles = [
@@ -87,24 +92,31 @@ const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY + 120;
+  const scrollY = window.scrollY + 140;
   sections.forEach(section => {
     if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
       navLinks.forEach(a => {
-        a.style.color = '';
-        if (a.getAttribute('href') === '#' + section.id) a.style.color = '#00ff41';
+        a.classList.toggle('active', a.getAttribute('href') === '#' + section.id);
       });
     }
   });
-});
+}, { passive: true });
 
 // ─── Hamburger Menu ─────────────────────────────────────────────
 const hamburger = document.querySelector('.hamburger');
 const navLinksList = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => navLinksList.classList.toggle('open'));
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => navLinksList.classList.remove('open'));
-});
+if (hamburger && navLinksList) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinksList.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinksList.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 // ─── Project Filters ────────────────────────────────────────────
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -143,13 +155,9 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
   const mailtoLink = `mailto:loydcipher@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
   window.location.href = mailtoLink;
 
-  btn.textContent = '▸ Message Sent to Client!';
-  btn.style.background = 'var(--neon)';
-  btn.style.color = 'var(--bg)';
+  btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Opening Mail Client...';
   setTimeout(() => {
-    btn.textContent = '▸ send_message.sh';
-    btn.style.background = '';
-    btn.style.color = '';
+    btn.innerHTML = '<i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message';
     e.target.reset();
   }, 3000);
 });
@@ -170,14 +178,13 @@ if (galleryTrack && prevBtn && nextBtn) {
 }
 
 
-// ─── In your JS file or <script> tag ─────────────────────────────────────────
+// ─── Service Card Navigation ────────────────────────────────────
 document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('click', (e) => {
-    // const page = card.getAttribute('data-page');
+    if (e.target.closest('a')) return;
     const item = e.target.closest('li');
-    const page = item.dataset.page;
+    const page = item?.dataset?.page;
     if (page) window.location.href = page;
-    console.log(`Navigating to: ${page}`); // For debugging
   });
 });
 
@@ -333,8 +340,8 @@ document.querySelector(".image-viewer-close").addEventListener("click", closeIma
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     closeImageViewer();
+    closeApkModal();
   }
-
 });
 
 function updateApkGalleryButtons() {

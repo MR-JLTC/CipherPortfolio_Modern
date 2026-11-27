@@ -4,58 +4,61 @@
    ========================================================================== */
 
 :root {
-  /* ── Colors: Primary (Neon) ── */
-  --color-neon: #00ff41;
-  --color-neon-dim: #00cc33;
-  --color-neon-glow: rgba(0, 255, 65, 0.25);
-  --color-neon-glow-sm: rgba(0, 255, 65, 0.1);
-/* ──>>>>>>>>>>>>>>>>>>>── */
+  color-scheme: dark;
 
-  /* ── Colors: Backgrounds ── */
-  --color-bg: #080c08;
-  --color-bg2: #0d120d;
-  --color-bg3: #111611;
-/* ──>>>>>>>>>>>>>>>>>>>── */
+  /* ── Colors: Primary (Refined Cyber Emerald) ── */
+  --color-neon: #10b981;
+  --color-neon-bright: #34d399;
+  --color-neon-dim: #059669;
+  --color-neon-glow: rgba(16, 185, 129, 0.22);
+  --color-neon-glow-sm: rgba(16, 185, 129, 0.08);
+  /* ──>>>>>>>>>>>>>>>>>>>── */
+
+  /* ── Colors: Backgrounds (Deep Obsidian Slate) ── */
+  --color-bg: #090d11;
+  --color-bg2: #0d131a;
+  --color-bg3: #131b24;
+  /* ──>>>>>>>>>>>>>>>>>>>── */
 
   /* ── Colors: Surfaces ── */
-  --color-surface: rgba(0, 255, 65, 0.04);
-  --color-surface-hover: rgba(0, 255, 65, 0.08);
-/* ──>>>>>>>>>>>>>>>>>>>── */
+  --color-surface: rgba(19, 27, 36, 0.72);
+  --color-surface-hover: rgba(25, 36, 48, 0.9);
+  /* ──>>>>>>>>>>>>>>>>>>>── */
 
   /* ── Colors: Borders ── */
-  --color-border: rgba(0, 255, 65, 0.15);
-  --color-border-hover: rgba(0, 255, 65, 0.35);
-  --color-border-focus: rgba(0, 255, 65, 0.5);
-/* ──>>>>>>>>>>>>>>>>>>>── */
+  --color-border: rgba(148, 163, 184, 0.14);
+  --color-border-hover: rgba(16, 185, 129, 0.4);
+  --color-border-focus: rgba(16, 185, 129, 0.65);
+  /* ──>>>>>>>>>>>>>>>>>>>── */
 
   /* ── Colors: Text ── */
-  --color-text: #c8e6c8;
-  --color-text-dim: #6b8f6b;
-  --color-white: #fff;
-/* ──>>>>>>>>>>>>>>>>>>>── */
+  --color-text: #e2e8f0;
+  --color-text-dim: #94a3b8;
+  --color-white: #f8fafc;
+  /* ──>>>>>>>>>>>>>>>>>>>── */
 
   /* ── Colors: Semantic ── */
-  --color-danger: #ff5f57;
-  --color-warning: #febc2e;
-  --color-success: #28c840;
-  --color-cyan: #00ffff;
-  --color-magenta: #ff00ff;
+  --color-danger: #f87171;
+  --color-warning: #fbbf24;
+  --color-success: #34d399;
+  --color-cyan: #38bdf8;
+  --color-magenta: #c084fc;
   /* ──>>>>>>>>>>>>>>>>>>>── */
 
   /* ── Typography: Font Families ── */
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
   /* ──>>>>>>>>>>>>>>>>>>>── */
 
   /* ── Typography: Font Sizes ── */
-  --text-xs: 0.62rem;
-  --text-sm: 0.72rem;
-  --text-base: 0.82rem;
-  --text-md: 0.88rem;
-  --text-lg: 0.95rem;
-  --text-xl: 1.05rem;
-  --text-2xl: 1.1rem;
-  --text-3xl: 1.4rem;
+  --text-xs: 0.7rem;
+  --text-sm: 0.78rem;
+  --text-base: 0.9rem;
+  --text-md: 0.95rem;
+  --text-lg: 1.05rem;
+  --text-xl: 1.15rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem;
   /* ──>>>>>>>>>>>>>>>>>>>── */
 
   /* ── Spacing Scale ── */

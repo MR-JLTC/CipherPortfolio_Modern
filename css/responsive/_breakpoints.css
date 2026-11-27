@@ -16,7 +16,8 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(8, 12, 8, 0.97);
+    background: rgba(9, 13, 17, 0.97);
+    backdrop-filter: blur(14px);
     padding: var(--space-xl);
     border-bottom: 1px solid var(--color-border);
     gap: var(--space-lg);
@@ -31,16 +32,19 @@
   }
 
   #hero {
-    padding: 0 var(--space-xl);
+    min-height: auto;
+    padding: calc(var(--header-height, 68px) + var(--space-xl)) 0 var(--space-xl);
   }
 
   .hero-inner {
+    padding: 0 var(--space-lg);
     grid-template-columns: 1fr;
     text-align: center;
   }
 
   .hero-avatar {
     order: -1;
+    justify-content: center;
   }
 
   .avatar-wrap {
@@ -63,7 +67,7 @@
   }
 
   .section-wrap {
-    padding: var(--space-3xl) var(--space-xl);
+    padding: var(--space-xl) var(--space-lg);
   }
 
   .about-grid {
@@ -144,8 +148,12 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .hero-inner {
+    padding: 0 1.25rem;
+  }
+
   .section-wrap {
-    padding: 3.5rem 1.5rem;
+    padding: 2.25rem 1.25rem;
   }
 
   .proj-id {
@@ -169,14 +177,13 @@
   }
 
   #hero {
-    padding: 0 1.2rem;
-    padding-top: 5rem;
-    min-height: 100svh;
+    padding: calc(var(--header-height, 64px) + var(--space-lg)) 0 var(--space-lg);
+    min-height: auto;
   }
 
   .hero-inner {
-    gap: 2rem;
-    padding-bottom: 2rem;
+    padding: 0 1.1rem;
+    gap: 1.5rem;
   }
 
   .hero-name {
@@ -210,7 +217,7 @@
   }
 
   .section-wrap {
-    padding: 3rem 1.2rem;
+    padding: 2rem 1.1rem;
   }
 
   .section-title {
@@ -276,8 +283,12 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .hero-inner {
+    padding: 0 1rem;
+  }
+
   .section-wrap {
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
   }
 
   .nav {

@@ -15,12 +15,12 @@
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  background: rgba(57, 255, 20, 0.12);
-  color: var(--color-neon);
-  border: 1px solid rgba(57, 255, 20, 0.3);
+  background: var(--color-neon-glow-sm);
+  color: var(--color-neon-bright);
+  border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 99px;
   padding: 0.15rem 0.55rem;
   margin-left: auto;
@@ -218,10 +218,10 @@
   margin-left: auto;
 }
 
-.rr-status--pending   { color: #febc2e; border-color: rgba(254,188,46,0.4); background: rgba(254,188,46,0.08); }
-.rr-status--progress  { color: #00d4ff; border-color: rgba(0,212,255,0.4);  background: rgba(0,212,255,0.08);  }
-.rr-status--done      { color: var(--color-neon); border-color: rgba(57,255,20,0.4); background: rgba(57,255,20,0.08); }
-.rr-status--cancelled { color: var(--color-danger); border-color: rgba(255,95,87,0.4); background: rgba(255,95,87,0.08); }
+.rr-status--pending   { color: var(--color-warning); border-color: rgba(251,191,36,0.35); background: rgba(251,191,36,0.08); }
+.rr-status--progress  { color: var(--color-cyan); border-color: rgba(56,189,248,0.35);  background: rgba(56,189,248,0.08);  }
+.rr-status--done      { color: var(--color-neon-bright); border-color: rgba(16,185,129,0.35); background: var(--color-neon-glow-sm); }
+.rr-status--cancelled { color: var(--color-danger); border-color: rgba(248,113,113,0.35); background: rgba(248,113,113,0.08); }
 .rr-status--unknown   { color: var(--color-text-dim); border-color: var(--color-border); background: transparent; }
 
 /* Card body */

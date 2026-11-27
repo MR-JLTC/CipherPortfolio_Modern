@@ -35,23 +35,19 @@
 .skills-panel__title {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--color-neon);
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--color-white);
+  letter-spacing: 0.03em;
 }
 
 .skills-panel__badge {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--color-text-dim);
-  border: 1px solid var(--color-border);
-  padding: 0.1rem var(--space-sm);
+  color: var(--color-neon-bright);
+  background: var(--color-neon-glow-sm);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.15rem var(--space-sm);
   border-radius: var(--radius-sm);
-}
-
-.skills-panel__badge--scanning {
-  color: var(--color-neon-dim);
-  border-color: rgba(0, 255, 65, 0.3);
-  animation: blink 2s infinite;
 }
 
 /* ── Skill Bars ── */
@@ -96,11 +92,10 @@
 
 .skill-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-neon-dim), var(--color-neon));
+  background: linear-gradient(90deg, var(--color-neon-dim), var(--color-neon-bright));
   border-radius: var(--radius-sm);
   width: 0;
   transition: width var(--transition-smooth);
-  box-shadow: 0 0 8px var(--color-neon-glow);
 }
 
 /* ── Language Grid ── */
@@ -113,34 +108,34 @@
 
 .lang-tag {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--color-text);
   text-align: center;
-  padding: 0.45rem 0.3rem;
+  padding: 0.5rem 0.35rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg3);
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
 }
 
 .lang-tag:hover {
-  border-color: var(--color-neon-dim);
-  color: var(--color-neon);
+  border-color: var(--color-border-hover);
+  color: var(--color-neon-bright);
   background: var(--color-surface-hover);
 }
 
-/* ── Warning ── */
-.lang-warning {
+/* ── Focus Note ── */
+.lang-note {
   border-top: 1px solid var(--color-border);
-  padding: 0.7rem var(--space-md);
+  padding: 0.85rem var(--space-md);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--text-xs);
   color: var(--color-text-dim);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-.lang-warning__label {
-  color: var(--color-danger);
-  display: block;
-  margin-bottom: var(--space-xs);
+.lang-note__label {
+  color: var(--color-neon-bright);
+  font-weight: 700;
+  margin-right: 0.35rem;
 }

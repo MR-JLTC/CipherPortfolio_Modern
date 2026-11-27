@@ -7,12 +7,14 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-3xl);
+  gap: var(--space-xl);
   align-items: start;
 }
 
 .about-text p {
   color: var(--color-text-dim);
+  font-size: var(--text-md);
+  line-height: 1.75;
   margin-bottom: var(--space-md);
 }
 
@@ -22,6 +24,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
 .terminal-bar {
@@ -60,10 +63,10 @@
 }
 
 .terminal-body {
-  padding: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   font-family: var(--font-mono);
-  font-size: var(--text-base);
-  line-height: 2;
+  font-size: var(--text-sm);
+  line-height: 1.75;
 }
 
 /* ── Terminal Lines ── */

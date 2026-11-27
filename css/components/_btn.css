@@ -23,8 +23,8 @@
   line-height: 1;
   white-space: nowrap;
 
-  padding: 0.7rem 1.5rem;
-  border-radius: var(--radius-sm);   /* Sharp corners — professional, not bubbly */
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
   border: 1px solid transparent;
 
   cursor: pointer;
@@ -85,18 +85,18 @@
    ───────────────────────────────────────────── */
 .btn--primary {
   background: var(--color-neon);
-  color: #050d05;                    /* Near-black text on bright neon — max contrast */
+  color: #04120c;
   border-color: var(--color-neon);
-  box-shadow: 0 0 12px var(--color-neon-glow-sm);
+  box-shadow: 0 2px 12px var(--color-neon-glow-sm);
 }
 
 .btn--primary:hover {
-  background: #00e639;
-  border-color: #00e639;
-  color: #030a03;
+  background: var(--color-neon-bright);
+  border-color: var(--color-neon-bright);
+  color: #030e09;
   box-shadow:
-    0 0 16px var(--color-neon-glow),
-    0 2px 8px rgba(0, 0, 0, 0.45);
+    0 4px 18px var(--color-neon-glow),
+    0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 .btn--primary:active {

@@ -5,11 +5,20 @@
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-bg);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(16, 185, 129, 0.08), transparent 60%),
+    var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
   line-height: 1.7;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-neon-bright);
+  outline-offset: 3px;
 }
 
 img {
