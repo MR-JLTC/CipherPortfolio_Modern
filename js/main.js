@@ -166,6 +166,7 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
 const galleryTrack = document.querySelector('.gallery-track');
 const prevBtn = document.querySelector('.gallery-btn.prev');
 const nextBtn = document.querySelector('.gallery-btn.next');
+const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
 
 if (galleryTrack && prevBtn && nextBtn) {
   prevBtn.addEventListener('click', () => {
@@ -176,6 +177,25 @@ if (galleryTrack && prevBtn && nextBtn) {
     galleryTrack.scrollBy({ left: 300, behavior: 'smooth' });
   });
 }
+
+galleryImages.forEach((img, index) => {
+  img.setAttribute('tabindex', '0');
+  img.setAttribute('role', 'button');
+  img.setAttribute('aria-label', `View ${img.alt || 'gallery image'} fullscreen`);
+
+  const openFromGallery = () => {
+    const list = galleryImages.map(item => ({ src: item.src, alt: item.alt }));
+    openImageViewer(img.src, list, index);
+  };
+
+  img.addEventListener('click', openFromGallery);
+  img.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openFromGallery();
+    }
+  });
+});
 
 
 // ─── Service Card Navigation ────────────────────────────────────
@@ -316,28 +336,93 @@ function openApkModal(e, projectId) {
   setTimeout(updateApkGalleryButtons, 100);
 }
 
-function openImageViewer(src) {
+let viewerImages = [];
+let viewerIndex = 0;
+
+function updateImageViewerNav() {
+  const prevNav = document.getElementById("image-viewer-prev");
+  const nextNav = document.getElementById("image-viewer-next");
+  const showNav = viewerImages.length > 1;
+  if (prevNav) prevNav.style.display = showNav ? "flex" : "none";
+  if (nextNav) nextNav.style.display = showNav ? "flex" : "none";
+}
+
+function showViewerImage(index) {
+  if (!viewerImages.length) return;
+  viewerIndex = (index + viewerImages.length) % viewerImages.length;
+  const img = document.getElementById("image-viewer-img");
+  const current = viewerImages[viewerIndex];
+  img.src = current.src;
+  img.alt = current.alt || "Fullscreen preview";
+}
+
+function openImageViewer(src, list = [], index = 0) {
   const viewer = document.getElementById("image-viewer");
   const img = document.getElementById("image-viewer-img");
-  img.src = src;
+  viewerImages = Array.isArray(list) ? list : [];
+  viewerIndex = index;
+
+  if (viewerImages.length > 0) {
+    showViewerImage(viewerIndex);
+  } else {
+    img.src = src;
+    img.alt = "Fullscreen preview";
+  }
+
+  updateImageViewerNav();
   viewer.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 function closeImageViewer() {
   const viewer = document.getElementById("image-viewer");
+  const apkModal = document.getElementById("apk-modal");
   viewer.style.display = "none";
+  if (!apkModal || apkModal.style.display !== "flex") {
+    document.body.style.overflow = "";
+  }
 }
 
-document.getElementById("image-viewer").addEventListener("click", function (e) {
+const imageViewerEl = document.getElementById("image-viewer");
+imageViewerEl.addEventListener("click", function (e) {
   if (e.target === this) {
     closeImageViewer();
   }
-
 });
+
+document.getElementById("image-viewer-prev")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  showViewerImage(viewerIndex - 1);
+});
+
+document.getElementById("image-viewer-next")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  showViewerImage(viewerIndex + 1);
+});
+
+let viewerTouchStartX = 0;
+imageViewerEl.addEventListener("touchstart", (e) => {
+  viewerTouchStartX = e.changedTouches[0].clientX;
+}, { passive: true });
+
+imageViewerEl.addEventListener("touchend", (e) => {
+  if (viewerImages.length <= 1) return;
+  const diff = e.changedTouches[0].clientX - viewerTouchStartX;
+  if (Math.abs(diff) > 45) {
+    showViewerImage(diff > 0 ? viewerIndex - 1 : viewerIndex + 1);
+  }
+}, { passive: true });
 
 document.querySelector(".image-viewer-close").addEventListener("click", closeImageViewer);
 
 document.addEventListener("keydown", function (e) {
+  if (imageViewerEl.style.display === "flex") {
+    if (e.key === "ArrowLeft" && viewerImages.length > 1) {
+      showViewerImage(viewerIndex - 1);
+    } else if (e.key === "ArrowRight" && viewerImages.length > 1) {
+      showViewerImage(viewerIndex + 1);
+    }
+  }
   if (e.key === "Escape") {
     closeImageViewer();
     closeApkModal();
